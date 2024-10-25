@@ -1,0 +1,101 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e6f2ff; /* Light blue background */
+    color: #003366; /* Darker blue text color */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    padding: 1.5rem;
+    background-color: #0059b3; /* Primary blue for header */
+    color: #fff;
+    width: 100%;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.about-card {
+    background-color: #ffffff;
+    max-width: 700px;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 89, 179, 0.2);
+    text-align: left;
+    margin: 1rem;
+}
+
+.about-card h2 {
+    color: #0059b3;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.about-card p, .about-card ul {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #003366;
+}
+
+.about-card ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+}
+
+.about-card li b {
+    color: #0059b3;
+}
+
+footer {
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    background-color: #0059b3;
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: flex-end; /* Align the menu to the right */
+    flex-grow: 1; /* Take up remaining space */
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin-left: 20px; /* Add some space between the items */
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+}
