@@ -36,6 +36,6 @@ The CPU Scheduler Simulation Website is a valuable resource for learning about C
 This project is licensed under the MIT License.
 
 ## Contact<br>
-You can reach me via email at <diyaburman60@gmail.com> or connect with us on [LinkedIn](https://www.linkedin.com/in/diya-burman). Feedback, suggestions, and opportunities for collaboration are always welcome!
+You can reach me via email at <diyaburman60@gmail.com> or connect with us on [LinkedIn](https://www.linkedin.com/in/diya-burman-13981b262/). Feedback, suggestions, and opportunities for collaboration are always welcome!
 
 Thank you for visiting. Enjoy exploring the projects!
