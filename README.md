@@ -40,6 +40,5 @@ This project is licensed under the MIT License.
 You can reach me via email at <diyaburman60@gmail.com> <vasu.tan2017@gmail.com> or connect with us on [LinkedIn](https://www.linkedin.com/in/diya-burman-13981b262/). Feedback, suggestions, and opportunities for collaboration are always welcome!
 =======
 You can reach me via email at <diyaburman60@gmail.com> or connect with us on [LinkedIn](https://www.linkedin.com/in/diya-burman-13981b262/). Feedback, suggestions, and opportunities for collaboration are always welcome!
->>>>>>> 2f12b1ecd850ec07622635d0ceb5509803796489
 
 Thank you for visiting. Enjoy exploring the projects!
