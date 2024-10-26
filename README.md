@@ -31,12 +31,11 @@ The CPU Scheduler Simulation Website offers an interactive platform that allows 
 ## Conclusion<br>
 The CPU Scheduler Simulation Website is a valuable resource for learning about CPU scheduling algorithms. Its interactive nature, real-time visualization, and customization options make it a powerful tool for students, educators, and professionals alike. By providing practical insights into the functioning of various scheduling algorithms, the platform empowers users to make informed decisions when dealing with real-world CPU scheduling scenarios.
 
-Visit the **[CPU Scheduler Simulation Website](https://da111003.github.io/CPU_Scheduler/)** and start exploring the world of CPU scheduling algorithms today!
 
 ## License<br>
 This project is licensed under the MIT License.
 
 ## Contact<br>
-You can reach me via email at <diyaburman60@gmail.com> or connect with us on [LinkedIn](https://www.linkedin.com/in/deepakaggarwal111003/). Feedback, suggestions, and opportunities for collaboration are always welcome!
+You can reach me via email at <diyaburman60@gmail.com> or connect with us on [LinkedIn](https://www.linkedin.com/in/diya-burman). Feedback, suggestions, and opportunities for collaboration are always welcome!
 
 Thank you for visiting. Enjoy exploring the projects!
