@@ -170,3 +170,42 @@
         height: 350px; /* Adjusted height for smaller screens */
     }
 }
+
+.course-colomn{
+    flex-basis: 31%;
+    background-color: #0cbaba;
+    background-image: linear-gradient(315deg, #461445 0%, #489393 74%);
+    color: white;
+    border-radius: 10px;
+    margin-bottom:5%;
+    padding:20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+.course-colomn hr{
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+.course-colomn p{
+    color:rgb(202, 200, 200);
+    font-size: 12px;
+    line-height: 1.6rem;
+}
+
+h3{
+    text-align:center;
+    font-weight: 600;
+    margin:10px 0;
+}
+
+.course-colomn:hover{
+    box-shadow:0 0 20px 0px rgba(0,0,0,0.6);
+}
+
+@media only screen and (max-width:730px){
+    .row{
+        flex-direction: column;
+    }
+}
