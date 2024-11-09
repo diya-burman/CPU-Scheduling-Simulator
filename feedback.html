@@ -68,14 +68,19 @@
 
   <script src="feedback.js"></script>
   <script>
+    var navLinks = document.getElementById("navLinks");
     function showMenu() {
-        document.getElementById("navLinks").classList.add("show");
+        navLinks.style.right = "0";
     }
-  
+
     function hideMenu() {
-        document.getElementById("navLinks").classList.remove("show");
+        navLinks.style.right = "-200px";
     }
-  </script>
+
+    function gotoDocs(){
+        location.href = ("docs.html");
+    }
+</script>
 </body>
 
 </html>
