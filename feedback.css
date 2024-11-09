@@ -114,7 +114,7 @@ nav.navStyle {
 .nav-links {
     display: flex;
     justify-content: flex-start; /* Align links to the left */
-    align-items: center;
+    align-items: left;
     gap: 20px; /* Adds consistent spacing between each link */
 }
 
