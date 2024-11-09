@@ -7,17 +7,17 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #e6f2ff; /* Light blue background */
-    color: #003366; /* Darker blue text color */
+    background: url('background-image.jpg') no-repeat center center fixed; /* Replace with your background image */
+    background-size: cover;
+    color: #003366;
     display: flex;
     flex-direction: column;
-    align-items: center;
     min-height: 100vh;
 }
 
 header {
     padding: 1.5rem;
-    background-color: #0059b3; /* Primary blue for header */
+    background-color: #0059b3;
     color: #fff;
     width: 100%;
     text-align: center;
@@ -37,13 +37,12 @@ main {
 }
 
 .about-card {
-    background-color: #ffffff;
-    max-width: 700px;
+    width: 100%; /* Full width */
+    background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 89, 179, 0.2);
     text-align: left;
-    margin: 1rem;
+    margin: 0; /* No margin to ensure full width */
+    min-height: calc(100vh - 200px); /* Adjust based on header and footer height */
 }
 
 .about-card h2 {
@@ -78,8 +77,8 @@ footer {
 
 .nav-links {
     display: flex;
-    justify-content: flex-end; /* Align the menu to the right */
-    flex-grow: 1; /* Take up remaining space */
+    justify-content: flex-end;
+    flex-grow: 1;
 }
 
 .menu {
@@ -90,7 +89,7 @@ footer {
 }
 
 .menu li {
-    margin-left: 20px; /* Add some space between the items */
+    margin-left: 20px;
 }
 
 .menu li a {
