@@ -22,7 +22,7 @@
 
         .blog-title {
             font-size: 20px;
-            color: blue;
+            color: rgb(0, 0, 255);
         }
 
         /* Card styling */
@@ -35,17 +35,34 @@
             transform: translate(-50%, -50%);
             width: 80%;
             max-width: 500px;
-            background-color: white;
-            padding: 20px;
             border: 1px solid #ccc;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             overflow-y: auto;
             max-height: 70vh;
+            background-color: #f8f8f8;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px;
+            transition: transform 0.3 ease-in-out;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .card h2 {
             margin-top: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
 
         /* Overlay styling */
@@ -63,13 +80,23 @@
 
         /* Close button styling */
         .close-btn {
-            background-color: #333;
-            color: white;
+            background: none;
+            color: #333;
             border: none;
             padding: 5px 10px;
             cursor: pointer;
             float: right;
-            font-size: 16px;
+            font-size: 20px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-weight: bold;
+            transition: all 1s ease-in-out;
+            border: 1px solid #000000;
+            /* Add a border */
+            padding: 1px 11px;
+            /* Adjust padding for the border */
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -83,7 +110,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="docs.html">Document</a></li>
-                    <li><a href="./backend/ganttcharts.html">Simulator</a></li>
+                    <li><a href="backend/ganttcharts.html">Simulator</a></li>
                     <li><a href="feedback.html">Feedback</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
@@ -107,7 +134,7 @@
                         (FCFS)</a>
                     <p>FCFS schedules processes strictly in the order of their arrival in a queue. When a process
                         arrives...</p>
-                    <a href="javascript:void(0);" id="more" onclick="openCard('fcfs')">Read More...</a>
+                    <a href="javascript:void(0);" id="more" onclick="openCard('fcfs')">Read More</a>
                 </div>
 
                 <div class="overlay" onclick="closeCard()"></div>
@@ -140,6 +167,10 @@
                     </ul>
                     <p><strong>Use Case:</strong> Typically used in batch systems or for simple job queues where
                         response time isn’t a high priority.</p>
+                    <!-- <a href="https://www.geeksforgeeks.org/cpu-scheduling-in-operating-systems/#1-first-come-first-serve"
+                        style="color: red;" target="_blank">
+                        Read Documentation
+                    </a> -->
                 </div>
             </div>
 
@@ -152,7 +183,7 @@
                     </a>
                     <p>SJF selects the process with the shortest estimated execution time next. The main objective is
                         to...</p>
-                    <a href="javascript:void(0);" id="more" onclick="openCard('sjf')">Read More...</a>
+                    <a href="javascript:void(0);" id="more" onclick="openCard('sjf')">Read More</a>
                 </div>
 
                 <div class="overlay" onclick="closeCard()"></div>
@@ -201,7 +232,7 @@
                     </a>
                     <p>SRTF is a preemptive version of Shortest Job Next (SJN). The CPU selects the process with the...
                     </p>
-                    <a href="javascript:void(0);" id="more" onclick="openCard('srtf')">Read More...</a>
+                    <a href="javascript:void(0);" id="more" onclick="openCard('srtf')">Read More</a>
                 </div>
 
                 <div class="overlay" onclick="closeCard()"></div>
@@ -249,7 +280,7 @@
                     </a>
                     <p>Processes are assigned priority levels (usually numerical).
                         The CPU selects the process with the...</p>
-                    <a href="javascript:void(0);" id="more" onclick="openCard('priority')">Read More...</a>
+                    <a href="javascript:void(0);" id="more" onclick="openCard('priority')">Read More</a>
                 </div>
 
                 <div class="overlay" onclick="closeCard()"></div>
@@ -297,7 +328,7 @@
                     </a>
                     <p>Each process is assigned a fixed time quantum or time slice (e.g., 10ms). Processes are placed in
                         a...</p>
-                    <a href="javascript:void(0);" id="more" onclick="openCard('rr')">Read More...</a>
+                    <a href="javascript:void(0);" id="more" onclick="openCard('rr')">Read More</a>
                 </div>
 
                 <div class="overlay" onclick="closeCard()"></div>
@@ -344,7 +375,7 @@
                     <a href="javascript:void(0);" class="blog-title" onclick="openCard('mlq')">Multilevel Queue (MLQ)
                     </a>
                     <p>This algorithm divides processes into multiple queues based on priority, type, or required...</p>
-                    <a href="javascript:void(0);" id="more" onclick="openCard('mlq')">Read More...</a>
+                    <a href="javascript:void(0);" id="more" onclick="openCard('mlq')">Read More</a>
                 </div>
 
                 <div class="overlay" onclick="closeCard()"></div>
