@@ -102,7 +102,7 @@ const run = () => {
   // const fc = new FCFS(mainInput.arrivalTime, mainInput.burstTime, mainInput.pid);
 
   const fc = new sjf();
- 
+
 
   //........................................................Section : 3(II) : Code for storing value into output array.........................................
   //creating a dynamic table and displaying it on front-end

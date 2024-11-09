@@ -37,8 +37,8 @@ var Preview = {
   //  The callback function is set up below, after the Preview object is set up.
   //
   Update: function () {
-    if (this.timeout) {clearTimeout(this.timeout)}
-      this.timeout = setTimeout(this.callback,this.delay);
+    if (this.timeout) { clearTimeout(this.timeout) }
+    this.timeout = setTimeout(this.callback, this.delay);
   },
 
   //
@@ -56,9 +56,9 @@ var Preview = {
     this.buffer.innerHTML = this.oldtext = text;
     this.mjRunning = true;
     MathJax.Hub.Queue(
-      ["Typeset",MathJax.Hub,this.buffer],
-      ["PreviewDone",this]
-      );
+      ["Typeset", MathJax.Hub, this.buffer],
+      ["PreviewDone", this]
+    );
   },
 
   //

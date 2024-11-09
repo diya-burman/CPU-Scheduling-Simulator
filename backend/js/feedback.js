@@ -1,4 +1,4 @@
-document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+document.getElementById('feedbackForm').addEventListener('submit', function (event) {
     event.preventDefault();  // Prevent form submission
 
     // Hide the form and show thank you message
