@@ -674,7 +674,7 @@ $(document).ready(function () {
 	function run() {
 		loadValues();
 
-		
+
 
 		Selectedalgorithm = algorithm;
 
@@ -958,7 +958,7 @@ $(".runButton").click(function () {
 	let totalProcess = processTotal.length;
 	// mainOutput.algorithm = processTotal.algorithm;
 	// console.log(Selectedalgorithm);
-	
+
 	mainOutput.quantum = tq;
 
 	for (let i = 0; i < totalProcess; i++) {
@@ -1164,37 +1164,37 @@ $(".runButton").click(function () {
 var explain = document.getElementById('ex');
 explain.style.display = "none";
 
-$("#explanation").click(function (){
+$("#explanation").click(function () {
 
 	explain.style.display = "block";
 
 	var inputdata = document.getElementById('input');
 	var steps = document.getElementById('steps');
 
-	inputdata.innerHTML += '  <span>Process Id :  '+ mainOutput.o_pid
-	+'</span></br><span>Arrival Time : '+ mainOutput.o_arrivaltime +'</span></br><span>Burst Time :  '+ mainOutput.o_bursttime +'</sp>';
+	if (!steps.hasChildNodes()) {
+		inputdata.innerHTML += '  <span>Process Id :  ' + mainOutput.o_pid
+			+ '</span></br><span>Arrival Time : ' + mainOutput.o_arrivaltime + '</span></br><span>Burst Time :  ' + mainOutput.o_bursttime + '</sp>';
 
-	steps.innerHTML += '<span><span class="step">Step 1 </span> : Sort all Process using Arrival Time </span></br><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Arrival Time : '+ mainOutput.o_arrivaltime.sort(function(a,b){return a-b}) +'</span>';
+		steps.innerHTML += '<span><span class="step">Step 1 </span> : Sort all Process using Arrival Time </span></br><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Arrival Time : ' + mainOutput.o_arrivaltime.sort(function (a, b) { return a - b }) + '</span>';
 
-	if(Selectedalgorithm == 'FCFS'){
-		steps.innerHTML += '</br></br><span><span class="step">Step 2 </span> : Arrival Time Sorting is done. Now Processes will be scheduled as per thier arrival time.</span></br></br><span><span class="step">Step 3 </span> : Now We will calculate Turn around Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp TurnAround Time = Completion Time - Arrival Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTurnaround Time : '+ mainOutput.turnAroundTime +'</span></br></br> <span><span class="step">Step 4 </span> : Now We will calculate Waiting Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time = Turn around Time - Burst Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time : '+ mainOutput.waitingTime +'</span>';
+		if (Selectedalgorithm == 'FCFS') {
+			steps.innerHTML += '</br></br><span><span class="step">Step 2 </span> : Now Processes will be scheduled as per thier arrival time.</span></br></br><span><span class="step">Step 3 </span> : Now We will calculate Turn around Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp TurnAround Time = Completion Time - Arrival Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTurnaround Time : ' + mainOutput.turnAroundTime + '</span></br></br> <span><span class="step">Step 4 </span> : Now We will calculate Waiting Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time = Turn around Time - Burst Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time : ' + mainOutput.waitingTime + '</span>';
+		}
+
+		else if (Selectedalgorithm == 'SJF') {
+			steps.innerHTML += '</br></br><span><span class="step">Step 2 </span>: Now We will sort the processes according to thier burst time to select Shortest Job first</span></br><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Burst Time : ' + mainOutput.o_bursttime.sort(function (a, b) { return a - b }) + '</span>' + '</br></br><span> <span class="step">Step 3 </span>: Burst time sorting is done. Now processes will be scheduled as per thier burst time. Now We will calculate Turn around Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp TurnAround Time = Completion Time - Arrival Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTurnaround Time : ' + mainOutput.turnAroundTime + '</span></br></br> <span><span class="step">Step 4 </span> : Now We will calculate Waiting Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time = Turn around Time - Burst Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time : ' + mainOutput.waitingTime + '</span>';
+		}
+
+		else if (Selectedalgorithm == 'Priority') {
+			steps.innerHTML += '</br></br><span><span class="step">Step 2 </span> : Now We will sort the processes according to thier Priority to select highest priority process first.</span></br><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Priority : ' + mainOutput.o_priority.sort(function (a, b) { return a - b }) + '</span>' + '</br></br><span><span class="step">Step 3 </span> :  Sorting is done for priority. Now processes will be scheduled as per thier priority. Now We will calculate Turn around Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp TurnAround Time = Completion Time - Arrival Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTurnaround Time : ' + mainOutput.turnAroundTime + '</span></br></br> <span><span class="step">Step 4 </span> : Now We will calculate Waiting Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time = Turn around Time - Burst Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time : ' + mainOutput.waitingTime + '</span>';
+		}
+
+		else if (Selectedalgorithm == 'Round Robin') {
+			steps.innerHTML += '</br></br><span><span class="step">Step 2 </span> : Now We will select the process one by one and allocate cpu to the process for selected time which is equals to Time Quantum.</br> Here Time Quantum is :  ' + mainOutput.quantum + '</br></br><span class="step">Step 3 </span>: Processes will get cpu like this :</br> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp P1 -> ' + mainOutput.quantum + '  || P2 -> ' + mainOutput.quantum + '  || P3 -> ' + mainOutput.quantum + ' and so on....' + '</br></br><span><span class="step">Step 4 </span> : Now We will calculate Turn around Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp TurnAround Time = Completion Time - Arrival Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTurnaround Time : ' + mainOutput.turnAroundTime + '</span></br></br> <span><span class="step">Step 5 </span> : Now We will calculate Waiting Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time = Turn around Time - Burst Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time : ' + mainOutput.waitingTime + '</span>';
+		}
+
+		else if (Selectedalgorithm == 'SRJF') {
+			steps.innerHTML += '</br></br><span><span class="step">Step 2 </span> : Now We will sort the processes according to thier burst time to select Shortest Job first</span></br><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Burst Time : ' + mainOutput.o_bursttime.sort(function (a, b) { return a - b }) + '</span>' + '</br></br><span><span class="step">Step 3 </span> : Here We are checking the burst time after each unit of time. If we find any process which has less burst time than current process then we allocate the cpu to that process.</br></br><span class="step">Step 4 </span> : Now We will calculate Turn around Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp TurnAround Time = Completion Time - Arrival Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTurnaround Time : ' + mainOutput.turnAroundTime + '</span></br></br> <span><span class="step">Step 5 </span> : Now We will calculate Waiting Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time = Turn around Time - Burst Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time : ' + mainOutput.waitingTime + '</span>';
+		}
 	}
-
-	else if(Selectedalgorithm == 'SJF'){
-		steps.innerHTML += '</br></br><span><span class="step">Step 2 </span>: Arrival Time Sorting is done. Now We will sort the processes according to thier burst time to select Shortest Job first</span></br><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Burst Time : '+ mainOutput.o_bursttime.sort(function(a,b){return a-b}) + '</span>' +  '</br></br><span> <span class="step">Step 3 </span>: Burst time sorting is done. Now processes will be scheduled as per thier burst time. Now We will calculate Turn around Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp TurnAround Time = Completion Time - Arrival Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTurnaround Time : '+ mainOutput.turnAroundTime +'</span></br></br> <span><span class="step">Step 4 </span> : Now We will calculate Waiting Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time = Turn around Time - Burst Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time : '+ mainOutput.waitingTime +'</span>';
-	}
-
-	else if(Selectedalgorithm == 'Priority'){
-		steps.innerHTML += '</br></br><span><span class="step">Step 2 </span> : Arrival Time Sorting is done. Now We will sort the processes according to thier Priority to select highest priority process first.</span></br><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Priority : '+ mainOutput.o_priority.sort(function(a,b){return a-b}) + '</span>' +  '</br></br><span><span class="step">Step 3 </span> :  Sorting is done for priority. Now processes will be scheduled as per thier priority. Now We will calculate Turn around Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp TurnAround Time = Completion Time - Arrival Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTurnaround Time : '+ mainOutput.turnAroundTime +'</span></br></br> <span><span class="step">Step 4 </span> : Now We will calculate Waiting Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time = Turn around Time - Burst Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time : '+ mainOutput.waitingTime +'</span>';
-	}
-
-	else if(Selectedalgorithm == 'Round Robin'){
-		steps.innerHTML += '</br></br><span><span class="step">Step 2 </span> : Arrival Time Sorting is done. Now We will select the process one by one and allocate cpu to the process for selected time which is equals to Time Quantum.</br> Here Time Quantum is :  '+ mainOutput.quantum + '</br></br><span class="step">Step 3 </span>: Processes will get cpu like this :</br> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp P1 -> '+mainOutput.quantum + '  || P2 -> '+mainOutput.quantum +'  || P3 -> '+mainOutput.quantum +' and so on....'+'</br></br><span><span class="step">Step 4 </span> : Now We will calculate Turn around Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp TurnAround Time = Completion Time - Arrival Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTurnaround Time : '+ mainOutput.turnAroundTime +'</span></br></br> <span><span class="step">Step 5 </span> : Now We will calculate Waiting Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time = Turn around Time - Burst Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time : '+ mainOutput.waitingTime +'</span>';
-	}
-
-	else if(Selectedalgorithm == 'SRJF'){
-		steps.innerHTML += '</br></br><span><span class="step">Step 2 </span> : Arrival Time Sorting is done. Now We will sort the processes according to thier burst time to select Shortest Job first</span></br><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Burst Time : '+ mainOutput.o_bursttime.sort(function(a,b){return a-b}) + '</span>' +  '</br></br><span><span class="step">Step 3 </span> : Here We are checking the burst time after each unit of time. If we find any process which has less burst time than current process then we allocate the cpu to that process.</br></br><span class="step">Step 4 </span> : Now We will calculate Turn around Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp TurnAround Time = Completion Time - Arrival Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTurnaround Time : '+ mainOutput.turnAroundTime +'</span></br></br> <span><span class="step">Step 5 </span> : Now We will calculate Waiting Time. We know that, </br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time = Turn around Time - Burst Time</span></br><span></br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp So,</br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Waiting Time : '+ mainOutput.waitingTime +'</span>';
-	}
-
-
 });
