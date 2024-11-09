@@ -110,17 +110,15 @@ nav.navStyle {
     box-sizing: border-box;
 }
 
-nav.navStyle a {
-    color: white;
-    text-decoration: none;
-    font-size: 24px;
-}
-
+/* Navbar links styling to align them to the left */
 .nav-links {
     display: flex;
+    justify-content: flex-start; /* Align links to the left */
     align-items: center;
+    gap: 20px; /* Adds consistent spacing between each link */
 }
 
+/* List styling */
 .nav-links ul {
     display: flex;
     list-style-type: none;
@@ -128,10 +126,12 @@ nav.navStyle a {
     padding: 0;
 }
 
+/* List item styling */
 .nav-links ul li {
-    margin-left: 20px; /* Adjust spacing between links as needed */
+    margin: 0; /* Removes margin between links */
 }
 
+/* Link styling */
 .nav-links ul li a {
     color: white;
     text-decoration: none;
@@ -143,8 +143,9 @@ nav.navStyle a {
     color: #007BFF; /* Hover color */
 }
 
+/* Hide close icon by default */
 .nav-links i {
-    display: none; /* Hide close icon by default */
+    display: none;
     font-size: 1.5em;
     color: white;
     cursor: pointer;
@@ -153,11 +154,11 @@ nav.navStyle a {
 /* Mobile responsiveness for menu icon */
 @media (max-width: 768px) {
     .nav-links ul {
-        display: none; /* Hide menu links */
+        display: none; /* Hide menu links on mobile */
     }
 
     .nav-links i {
-        display: block; /* Show menu icon */
+        display: block; /* Show menu icon on mobile */
     }
 }
 
@@ -182,3 +183,4 @@ nav.navStyle a {
 #navLinks ul li {
     margin: 15px 0;
 }
+
