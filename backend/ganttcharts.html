@@ -19,6 +19,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      gap: 20px;
     }
 
     .chartMenu {
@@ -62,11 +63,11 @@
       color: black;
     }
 
-    @media only screen and (max-width:730px){
-      .datavisulization{
-          display: none;
+    @media only screen and (max-width:730px) {
+      .datavisulization {
+        display: none;
       }
-  }
+    }
   </style>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -77,37 +78,34 @@
   <link rel="stylesheet" type="text/css" href="./css/cpu-scheduler.css">
 
   <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    showProcessingMessages: false,
-    messageStyle: "none",
-    tex2jax: { inlineMath: [['$','$'],['\\(','\\)']] }
-  });
+    MathJax.Hub.Config({
+      showProcessingMessages: false,
+      messageStyle: "none",
+      tex2jax: { inlineMath: [['$','$'],['\\(','\\)']] }
+    });
   </script>
 
-  <!-- <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-  </script> -->
-  <script type="text/javascript" src="./js/MathJaxSetup.js">
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   </script>
-
-  
-
+  <script defer type="text/javascript" src="./js/MathJaxSetup.js">
+  </script>
   <title> CPU scheduling</title>
 </head>
 
 
 <body>
 
-  <nav style="background-color: #151D3B;" class="navStyle">
+  <nav style="background-color: #151D3B;" class="navStyle" aria-hidden="true">
     <a href="./index.html" style="color: #fff;">Operating System</a>
     <div class="nav-links" id="navLinks">
       <i class="fas fa-window-close" onclick="hideMenu()"></i>
       <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="../docs.html">Document</a></li>
-                    <li><a href="backend/ganttcharts.html">Simulator</a></li>
-                    <li><a href="../feedback.html">Feedback</a></li>
-                    <li><a href="../about.html">About</a></li>
-                    <li><a href="../contact.html">Contact</a></li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../docs.html">Document</a></li>
+        <li><a href="backend/ganttcharts.html">Simulator</a></li>
+        <li><a href="../feedback.html">Feedback</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
       </ul>
     </div>
     <i class="fas fa-bars" onclick="showMenu()"></i>
@@ -115,16 +113,9 @@
 
 
   <div class="container">
-
-
-
-    <h2 style="text-align: center;">CPU&nbsp;scheduler</h2>
+    <h2 style="text-align: center;">CPU Scheduler</h2>
     <p id="adj_counter" style="text-align: center;" class="lead">Type values into the table and the chart on the bottom
       will show how this runs</p>
-
-
-
-
     <table class="table table-bordered table-condensed" id="inputTable">
       <thead>
         <tr>
@@ -207,24 +198,13 @@
 
       </tbody>
     </table>
-
-
     <br>
-
-
-
-
-
     <div class="well">
-
       <div class="row">
-
         <div class="col-md-4">
           <div style=" display:inline-block;">
             <label>Algorithm:</label>
           </div>
-
-
           <div class="btn-group algorithm_dropdown" style="margin-left:5px;">
             <button type="button" id="algorithm_button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
               aria-expanded="false">
@@ -316,7 +296,7 @@
 
         <div style="display: block; text-align: center;">
           <p>Click on the Reset button to run another program</p>
-          <button onclick=(location.reload()) class="runButton">Reset</button>
+          <button onclick=(location.reload()) class="runButton" aria-label="Reset Button">Reset</button>
         </div>
 
         <!-- <div class="col-md-4" style="margin-top:20px;">
@@ -364,42 +344,42 @@
 
 
     <div class="datavisulization">
-    <h2 style="text-align: center; margin-bottom: 40px;">Data Visulization</h2>
+      <h2 style="text-align: center; margin-bottom: 40px;">Data Visulization</h2>
 
 
-    <!-- <div class="barChart">
+      <!-- <div class="barChart">
       <canvas id="myBarChart"></canvas>
     </div> -->
 
-    <hr>
-    <div class="pie" id="chartdiv">
-      <div class="first">
-        <div class="chartMenu">
-          <p>Waiting Time Chart</p>
-        </div>
-        <div class="chartCard">
-          <div class="chartBox">
-            <canvas id="myChart" width="400" height="400"></canvas>
-            <!-- <canvas id="myChart"></canvas> -->
+      <hr>
+      <div class="pie" id="chartdiv">
+        <div class="first">
+          <div class="chartMenu">
+            <p>Waiting Time Chart</p>
           </div>
-        </div>
-
-
-      </div>
-      <div class="second">
-        <div class="chartMenu">
-          <p>Turn around Time Chart</p>
-        </div>
-        <div class="chartCard">
-          <div class="chartBox">
-            <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
-            <canvas id="mytatChart" width="400" height="400"></canvas>
+          <div class="chartCard">
+            <div class="chartBox">
+              <canvas id="myChart" width="400" height="400"></canvas>
+              <!-- <canvas id="myChart"></canvas> -->
+            </div>
           </div>
-        </div>
 
+
+        </div>
+        <div class="second">
+          <div class="chartMenu">
+            <p>Turn around Time Chart</p>
+          </div>
+          <div class="chartCard">
+            <div class="chartBox">
+              <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
+              <canvas id="mytatChart" width="400" height="400"></canvas>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
-  </div>
 
 
     <span style="font-size: large; color: rgb(3, 27, 94);">CPU Utilization:
@@ -413,54 +393,52 @@
     </span>
 
     <button id="explanation">Show Explanation</button>
-  
 
-      <div class="explain container_docs" id="ex">
-        <h1>Algorithm Explanation</h1>
-        <p style="color: #FD5D5D; font-size: large;">User Input :</p>
-        <p id="input"></p>
-        <p id="steps"></p>
-      </div>
+
+    <div class="explain container_docs" id="ex">
+      <h1>Algorithm Explanation</h1>
+      <p style="color: #FD5D5D; font-size: large;">User Input :</p>
+      <p id="input"></p>
+      <p id="steps"></p>
+    </div>
 
   </div><!-- /containter -->
 
   <section class="footer">
-    
+
 
     <div class="icons">
       <div class="icons">
         <a href="https://github.com/vtandon1204"><i class="fab fa-github social-media-icon"></i></a>
         <a href="https://www.linkedin.com/in/vtandon1204/"><i class="fab fa-linkedin-in social-media-icon"></i></a>
-        <a href="mailto:vasu.tan2017@gmail.com"><i class="fas fa-envelope social-media-icon"></i></a>    
-    </div>
-        
-    <p>Made With <i class="far fa-heart"></i> by Vaibhav & Diya</p>
-    <p> <i class="fa fa-copyright"></i> copyright 2024 | All rights reserved</p>
+        <a href="mailto:vasu.tan2017@gmail.com"><i class="fas fa-envelope social-media-icon"></i></a>
+      </div>
+
+      <p>Made With <i class="far fa-heart"></i> by Vaibhav & Diya</p>
+      <p> <i class="fa fa-copyright"></i> copyright 2024 | All rights reserved</p>
   </section>
 
 
 
 
-  
+
   <!-- <script src="js/new.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js"
     integrity="sha512-R/QOHLpV1Ggq22vfDAWYOaMd5RopHrJNMxi8/lJu8Oihwi4Ho4BRFeiMiCefn9rasajKjnx9/fTQ/xkWnkDACg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="./js/cpu-scheduler.js"> </script>
-  
+  <script src="./js/cpu-scheduler.js"> </script>
+
 
   <script>
-    var navLinks = document.getElementById("navLinks");
     function showMenu() {
-      navLinks.style.right = "0";
+      document.getElementById("navLinks").style.right = "0";
     }
 
     function hideMenu() {
-      navLinks.style.right = "-200px";
+      document.getElementById("navLinks").style.right = "-200px";
     }
-
   </script>
 
 </body>
