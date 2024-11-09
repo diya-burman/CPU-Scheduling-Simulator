@@ -418,9 +418,15 @@ h3{
     margin-top: 20px;
 }
 
-.footer p{
+.footer {
+    line-height: 1.2; /* Adjust line height */
+}
+
+.footer p {
+    margin: 5px 0; /* Adjust margin */
     color: white;
 }
+
 
 .footer h4{
     margin-bottom:25px;
@@ -787,15 +793,19 @@ h3{
     transition: all ease 0.3s;
 }
 
-.blog-text p{
-    color:#9b9b9b;
-    font-size:0.9rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
+.blog-text p {
+    color: #9b9b9b;
+    font-size: 0.9rem;
+    display: -webkit-box; /* For older WebKit-based browsers */
+    display: -webkit-box; /* For newer WebKit-based browsers */
+    display: -ms-flexbox; /* For Microsoft Edge */
+    display: flex; /* For modern browsers */
+    -webkit-line-clamp: 3; /* For older WebKit-based browsers */
+    line-clamp: 3; /* For newer WebKit-based browsers and other modern browsers */
     -webkit-box-orient: vertical;
-    overflow: hidden; 
+    overflow: hidden;
     text-overflow: ellipsis;
-    margin:20px 0px;
+    margin: 20px 0px;
 }
 
 .blog-text a{
