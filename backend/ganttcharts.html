@@ -96,7 +96,7 @@
 <body>
 
   <nav style="background-color: #151D3B;" class="navStyle" aria-hidden="true">
-    <a href="./index.html" style="color: #fff;">Operating System</a>
+    <a href="./index.html" style="color: #fff;">CPU Scheduler</a>
     <div class="nav-links" id="navLinks">
       <i class="fas fa-window-close" onclick="hideMenu()"></i>
       <ul>
@@ -113,9 +113,10 @@
 
 
   <div class="container">
-    <h2 style="text-align: center;">CPU Scheduler</h2>
-    <p id="adj_counter" style="text-align: center;" class="lead">Type values into the table and the chart on the bottom
-      will show how this runs</p>
+    <h2 style="text-align: center;">CPU&nbsp;Scheduler</h2>
+    <p id="adj_counter" style="text-align: center; font-size: 15px;" class="lead">
+      Enter values into the table, and the chart below will display the results.
+  </p>  
     <table class="table table-bordered table-condensed" id="inputTable">
       <thead>
         <tr>
@@ -129,21 +130,21 @@
         <tr id="row_1" class="collapse in">
           <th> P1</th>
           <td><input id="arrive_1" type="number" class="form-control" min="0" value="0" /></td>
-          <td><input type="number" id="burst_1" class="form-control" min="1" value="5" /></td>
+          <td><input type="number" id="burst_1" class="form-control" min="1" value="0" /></td>
           <td class="priority collapse"><input id="priority_1" type="number" class="form-control" value="1" /></td>
         </tr>
 
         <tr id="row_2" class="collapse in">
           <th> P2 </th>
           <td><input id="arrive_2" type="number" class="form-control" value="0" /></td>
-          <td><input type="number" id="burst_2" class="form-control" value="2" /></td>
+          <td><input type="number" id="burst_2" class="form-control" value="0" /></td>
           <td class="priority collapse"><input id="priority_2" type="number" class="form-control" value="2" /></td>
         </tr>
 
         <tr id="row_3" class="collapse in">
           <th> P3 </th>
           <td><input id="arrive_3" type="number" class="form-control" value="0" /></td>
-          <td><input id="burst_3" type="number" class="form-control" value="4" /></td>
+          <td><input id="burst_3" type="number" class="form-control" value="0" /></td>
           <td class="priority collapse"><input id="priority_3" type="number" class="form-control" value="3" /></td>
         </tr>
 
@@ -397,7 +398,7 @@
 
     <div class="explain container_docs" id="ex">
       <h1>Algorithm Explanation</h1>
-      <p style="color: #FD5D5D; font-size: large;">User Input :</p>
+      <p style="color: #FD5D5D; font-size: large;">User Input: </p>
       <p id="input"></p>
       <p id="steps"></p>
     </div>
