@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
     height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
@@ -92,11 +93,9 @@ button:hover {
     h1 {
         font-size: 1.5em;
     }
+
     form {
         width: 90%;
         padding: 15px;
     }
 }
-
-
-

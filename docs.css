@@ -156,12 +156,18 @@
 .blog-text p {
     color: #9b9b9b;
     font-size: 0.9rem;
-    display: -webkit-box; /* For older WebKit-based browsers */
-    display: -webkit-box; /* For newer WebKit-based browsers */
-    display: -ms-flexbox; /* For Microsoft Edge */
-    display: flex; /* For modern browsers */
-    -webkit-line-clamp: 3; /* For older WebKit-based browsers */
-    line-clamp: 3; /* For newer WebKit-based browsers and other modern browsers */
+    display: -webkit-box;
+    /* For older WebKit-based browsers */
+    display: -webkit-box;
+    /* For newer WebKit-based browsers */
+    display: -ms-flexbox;
+    /* For Microsoft Edge */
+    display: flex;
+    /* For modern browsers */
+    -webkit-line-clamp: 3;
+    /* For older WebKit-based browsers */
+    line-clamp: 3;
+    /* For newer WebKit-based browsers and other modern browsers */
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
