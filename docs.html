@@ -13,6 +13,65 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>CPU Scheduler</title>
+
+    <style>
+        /* Basic styling */
+        .blog-text {
+            margin: 20px;
+        }
+
+        .blog-title {
+            font-size: 20px;
+            color: blue;
+        }
+
+        /* Card styling */
+        .card {
+            display: none;
+            /* Initially hidden */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 500px;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            overflow-y: auto;
+            max-height: 70vh;
+        }
+
+        .card h2 {
+            margin-top: 0;
+        }
+
+        /* Overlay styling */
+        .overlay {
+            display: none;
+            /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Close button styling */
+        .close-btn {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            float: right;
+            font-size: 16px;
+        }
+    </style>
 </head>
 
 <body>
@@ -36,332 +95,302 @@
         <h1 id="docc">Documentation</h1>
 
     </section>
-
-
-<!-- 
-    <section class="container_docs" >
-        <h1>What is CPU Scheduling?</h1>
-        <p>CPU Scheduling is a process of determining which process will own CPU for execution while another process is
-            on hold. The main task of CPU scheduling is to make sure that whenever the CPU remains idle, the OS at least
-            select one of the processes available in the ready queue for execution. The selection process will be
-            carried out by the CPU scheduler. It selects one of the processes in memory that are ready for execution.
-        </p>
-    </section>
-
-    <section class="container_docs" data-aos="zoom-in-down">
-        <h1>Why CPU Scheduling?</h1>
-        <p>A typical process involves both I/O time and CPU time. In a uni programming system like MS-DOS, time spent
-            waiting for I/O is wasted and CPU is free during this time. In multi programming systems, one process can
-            use CPU while another is waiting for I/O. This is possible only with process scheduling.<br><br>
-            <strong>Objectives of Process Scheduling Algorithm</strong>
-            <li>Max CPU utilization [Keep CPU as busy as possible]</li>
-            <li>Fair allocation of CPU.</li>
-            <li>Max throughput [Number of processes that complete their execution per time unit]</li>
-            <li>Min turnaround time [Time taken by a process to finish execution]</li>
-            <li>Min waiting time [Time a process waits in ready queue]</li>
-            <li>Min response time [Time when a process produces first response]</li>
-
-        </p>
-    </section>
-
-    <section class="container_docs special" data-aos="zoom-in-down">
-        <h1>Important CPU scheduling Terminologies</h1>
-       
-        <li><strong>Burst Time/Execution Time:</strong> It is a time required by the process to complete execution. It
-            is also called running time.</li>
-        <li><strong>Arrival Time:</strong> when a process enters in a ready state</li>
-        <li><strong>Finish Time:</strong> when process complete and exit from a system</li>
-        <li><strong>Multiprogramming:</strong> A number of programs which can be present in memory at the same time.
-        </li>
-        <li><strong>Jobs:</strong> It is a type of program without any kind of user interaction.</li>
-        <li><strong>User:</strong> It is a kind of program having user interaction.</li>
-        <li><strong>Process:</strong> It is the reference that is used for both job and user.</li>
-        <li><strong>CPU/IO burst cycle:</strong> Characterizes process execution, which alternates between CPU and I/O
-            activity. CPU times are shorter than the time of I/O.</li>
-
-        </p>
-    </section>
-
-
-
-
-
-
-
-
-
-
-
-    <section class="container_docs" data-aos="zoom-in-down">
-        <h1>Types of CPU Scheduling</h1>
-        <p>There is mainly two major types of CPU Scheduling which is listed below.There is sub-types of this algorithm also. we have discussed all algorithm in details below. </p>
-        <li>Preemptive Algorithm</li>
-        <li>Non Preemptive Algorithm</li>
-        <br>
-
-        <p><strong class="bold">Preemptive Scheduling</strong><br><br>
-            In Preemptive Scheduling, the tasks are mostly assigned with their priorities. Sometimes it is important to
-            run a task with a higher priority before another lower priority task, even if the lower priority task is
-            still running. The lower priority task holds for some time and resumes when the higher priority task
-            finishes its execution.<br><br>
-            <br>
-            <strong class="bold">Non-Preemptive Scheduling</strong><br><br>
-            In this type of scheduling method, the CPU has been allocated to a specific process. The process that keeps
-            the CPU busy will release the CPU either by switching context or terminating. It is the only method that can
-            be used for various hardware platforms. That’s because it doesn’t need special hardware (for example, a
-            timer) like preemptive scheduling.
-        </p>
-
-        
-
-    </section>
-
-
-    <section class="container_docs" data-aos="zoom-in-down">
-        <h1>Types of CPU scheduling Algorithm</h1>
-        <p>There are mainly six types of process scheduling algorithm</p>
-        <li>First Come First Serve (FCFS)</li>
-        <li>Shortest-Job-First (SJF) Scheduling</li>
-        <li>Shortest Remaining Time</li>
-        <li>Priority Scheduling</li>
-        <li>Round Robin Scheduling</li>
-        <li>Multilevel Queue Scheduling</li>
-        <br>
-    </section>
-
-
-
-    <section class="container_docs" data-aos="zoom-in-down">
-        <h1>1) First Come First Serve</h1>
-        <p>First Come First Serve is the full form of FCFS. It is the easiest and most simple CPU scheduling algorithm.
-            In this type of algorithm, the process which requests the CPU gets the CPU allocation first. This scheduling
-            method can be managed with a FIFO queue.<br><br>
-
-            As the process enters the ready queue, its PCB (Process Control Block) is linked with the tail of the queue.
-            So, when CPU becomes free, it should be assigned to the process at the beginning of the queue.</p>
-
-        <h4>
-            <li>Advantages</li>
-        </h4>
-        <p>1. It is simple and easy to understand.<br></p>
-
-        <h4>
-            <li>Disadvantages</li>
-        </h4>
-        <p>1. The process with less execution time suffer i.e. waiting time is often quite long.<br><br>
-            2. Favors CPU Bound process then I/O bound process.<br><br>
-            3. FCFS algorithm is particularly troublesome for time-sharing systems, where it is important that each user
-            get a share of the CPU at regular intervals.</p>
-            <button class="btn_1" onclick="gotoSimulator();">Go to Simulator</button>
-        <br>
-    </section>
-
-    <section class="container_docs" data-aos="zoom-in-down">
-        <h1>2) Shortest Remaining Time</h1>
-        <p>The full form of SRT is Shortest remaining time. It is also known as SJF preemptive scheduling. In this
-            method, the process will be allocated to the task, which is closest to its completion. This method prevents
-            a newer ready state process from holding the completion of an older process.<br></p>
-
-        <h4>
-            <li>Advantages</li>
-        </h4>
-        <p>1. The main advantage of the SRTF algorithm is that it makes the processing of the jobs faster than the SJF
-            algorithm, mentioned it’s overhead charges are not counted.</p>
-
-        <h4>
-            <li>Disadvantages</li>
-        </h4>
-        <p>1. In SRTF, the context switching is done a lot more times than in SJN due to more consumption of the CPU's
-            valuable time for processing. The consumed time of CPU then adds up to its processing time and which then
-            diminishes the advantage of fast processing of this algorithm.<br></p>
-            <button class="btn_1" onclick="gotoSimulator();">Go to Simulator</button>
-        <br>
-    </section>
-
-    <section class="container_docs" data-aos="zoom-in-down">
-        <h1>3) Priority Based Scheduling</h1>
-        <p>Priority scheduling is a method of scheduling processes based on priority. In this method, the scheduler
-            selects the tasks to work as per the priority.<br><br>
-
-            Priority scheduling also helps OS to involve priority assignments. The processes with higher priority should
-            be carried out first, whereas jobs with equal priorities are carried out on a round-robin or FCFS basis.
-            Priority can be decided based on memory requirements, time requirements, etc.<br><br>
-
-        </p>
-        <h4>
-            <li>Advantages</li>
-        </h4>
-        <p>1. This provides a good mechanism where the relative importance of each process maybe precisely defined.<br>
-        </p>
-
-        <h4>
-            <li>Disadvantages</li>
-        </h4>
-        <p>1. If high priority processes use up a lot of CPU time, lower priority processes may starve and be postponed
-            indefinitely.The situation where a process never gets scheduled to run is called starvation<br><br>
-            2. Another problem is deciding which process gets which priority level assigned to it..<br></p>
-            <button class="btn_1" onclick="gotoSimulator();">Go to Simulator</button>
-        <br>
-    </section>
-
-    <section class="container_docs" data-aos="zoom-in-down">
-        <h1>4) Round-Robin Scheduling</h1>
-        <p>Round robin is the oldest, simplest scheduling algorithm. The name of this algorithm comes from the
-            round-robin principle, where each person gets an equal share of something in turn. It is mostly used for
-            scheduling algorithms in multitasking. This algorithm method helps for starvation free execution of
-            processes.<br><br></p>
-
-        <h4>
-            <li>Advantages</li>
-        </h4>
-        <p>1. Every process gets an equal share of the CPU.<br><br>
-            2. RR is cyclic in nature, so there is no starvation.</p>
-
-        <h4>
-            <li>Disadvantages</li>
-        </h4>
-        <p>1. Setting the quantum too short, increases the overhead and lowers the CPU efficiency, but setting it too
-            long may cause poor response to short processes.<br><br>
-            2. Average waiting time under the RR policy is often long.<br>
-        </p>
-        <button class="btn_1" onclick="gotoSimulator();">Go to Simulator</button>
-        <br>
-    </section>
-
-    <section class="container_docs" data-aos="zoom-in-down">
-        <h1>5) Shortest Job First</h1>
-        <p>SJF is a full form of (Shortest job first) is a scheduling algorithm in which the process with the shortest
-            execution time should be selected for execution next. This scheduling method can be preemptive or
-            non-preemptive. It significantly reduces the average waiting time for other processes awaiting
-            execution.<br></p>
-
-        <h4>
-            <li>Advantages</li>
-        </h4>
-        <p>1. Shortest jobs are favored.<br><br>
-            2. It is provably optimal, in that it gives the minimum average waiting time for a given set of processes.
-        </p>
-
-        <h4>
-            <li>Disadvantages</li>
-        </h4>
-        <p>1. SJF may cause starvation, if shorter processes keep coming. This problem is solved by aging..<br><br>
-            2. It cannot be implemented at the level of short term CPU scheduling.<br></p>
-
-            <button class="btn_1" onclick="gotoSimulator();">Go to Simulator</button>
-        <br>
-    </section>
-
-    <section class="container_docs" data-aos="zoom-in-down">
-        <h1>6) Multiple-Level Queues Scheduling</h1>
-        <p>This algorithm separates the ready queue into various separate queues. In this method, processes are assigned
-            to a queue based on a specific property of the process, like the process priority, size of the memory,
-            etc.<br><br>
-
-            However, this is not an independent scheduling OS algorithm as it needs to use other types of algorithms in
-            order to schedule the jobs.<br><br></p>
-
-        <h4>
-            <li>Advantages</li>
-        </h4>
-        <p>1. Application of separate scheduling for various kind of processes is possible
-            .<br></p>
-
-        <h4>
-            <li>Disadvantages</li>
-        </h4>
-        <p>1. The lowest level process faces starvation problem.<br></p>
-
-        <button class="btn_1" onclick="gotoSimulator();">Go to Simulator</button>
-        <br>
-    </section> -->
-
     <section id="blog">
         <div class="CPU-heading">
-            <h1>CPU SCHEDULING</h1>
         </div>
 
         <div class="blog-container" data-aos="zoom-in-up">
+            <!-- FCFS -->
             <div class="blog-box">
-                <!-- <div class="blog-img">
-                    <img src="./images/CPU Scheduling_2.PNG" alt="Blog">
-                </div>> -->
-
                 <div class="blog-text">
-                    <a href="https://www.fusion-reactor.com/blog/multithreading-and-multiprocessing/#:~:text=A%20multiprocessing%20system%20has%20more,runs%20parallel%20to%20each%20other." class="blog-title">First Come First Serve (FCFS)</a>
-                    <p>In Multiprocessing, many processes are executed simultaneously. While in multithreading, many threads of...</p>
-                    <a href="https://www.fusion-reactor.com/blog/multithreading-and-multiprocessing/#:~:text=A%20multiprocessing%20system%20has%20more,runs%20parallel%20to%20each%20other." id="more">Read More...</a>
+                    <a href="javascript:void(0);" class="blog-title" onclick="openCard('fcfs')">First Come First Serve
+                        (FCFS)</a>
+                    <p>FCFS schedules processes strictly in the order of their arrival in a queue. When a process
+                        arrives...</p>
+                    <a href="javascript:void(0);" id="more" onclick="openCard('fcfs')">Read More...</a>
+                </div>
+
+                <div class="overlay" onclick="closeCard()"></div>
+
+                <div class="card" id="fcfs-card">
+                    <button class="close-btn" onclick="closeCard()">x</button>
+                    <h2>First Come First Serve (FCFS)</h2>
+                    <p><strong>Mechanism:</strong> FCFS schedules processes strictly in the order of their arrival in a
+                        queue. When a process arrives, it's added to the end of the queue. The CPU processes each task
+                        in turn, moving from the front to the back of the queue.</p>
+                    <p><strong>Characteristics:</strong></p>
+                    <ul>
+                        <li><strong>Non-preemptive:</strong> Once a process starts executing, it will run until
+                            completion, even if another process arrives with higher priority.</li>
+                        <li><strong>Fairness:</strong> All processes get to execute in the order they arrive, which
+                            prevents newer tasks from taking CPU time away from older ones.</li>
+                    </ul>
+                    <p><strong>Pros:</strong></p>
+                    <ul>
+                        <li>Simple and straightforward to implement.</li>
+                        <li>Ensures each task is completed based on arrival time, maintaining fairness for batch
+                            processing.</li>
+                    </ul>
+                    <p><strong>Cons:</strong></p>
+                    <ul>
+                        <li><strong>Convoy Effect:</strong> Shorter tasks can be delayed by a long-running process that
+                            arrived earlier, leading to inefficient CPU utilization.</li>
+                        <li><strong>High Waiting Times:</strong> Average waiting time can be high since tasks must wait
+                            for all preceding ones to complete, regardless of their execution time.</li>
+                    </ul>
+                    <p><strong>Use Case:</strong> Typically used in batch systems or for simple job queues where
+                        response time isn’t a high priority.</p>
                 </div>
             </div>
 
+            <!-- SJF -->
             <div class="blog-box">
-                <!-- <div class="blog-img">
-                    <img src="./images/CPU Scheduling_3.PNG" alt="Blog">
-                </div> -->
-
                 <div class="blog-text">
-                    <a href="https://www.eletimes.com/microprocessor-vs-microcontroller-what-is-the-difference#:~:text=Ultimately%2C%20microcontrollers%20and%20microprocessors%20are,that%20connects%20to%20external%20peripherals." class="blog-title">Shortest-Job-First (SJF) Scheduling</a>
-                    <p>Microcontrollers and Microprocessors are different ways of organizing and optimizing a...</p>
-                    <a href="https://www.eletimes.com/microprocessor-vs-microcontroller-what-is-the-difference#:~:text=Ultimately%2C%20microcontrollers%20and%20microprocessors%20are,that%20connects%20to%20external%20peripherals." id="more">Read More...</a>
+                    <a href="javascript:void(0);" class="blog-title" onclick="openCard('sjf')">Shortest Job First (SJF)
+                        /
+                        Shortest Job Next (SJN)
+                    </a>
+                    <p>SJF selects the process with the shortest estimated execution time next. The main objective is
+                        to...</p>
+                    <a href="javascript:void(0);" id="more" onclick="openCard('sjf')">Read More...</a>
+                </div>
+
+                <div class="overlay" onclick="closeCard()"></div>
+                <div class="card" id="sjf-card">
+                    <button class="close-btn" onclick="closeCard()">x</button>
+                    <h2>Shortest Job First (SJF) / Shortest Job Next (SJN)</h2>
+                    <p><strong>Mechanism:</strong> SJF selects the process with the shortest estimated execution time
+                        next.
+                        The main objective is to minimize the average waiting time.</p>
+                    <p><strong>Characteristics:</strong></p>
+                    <ul>
+                        <li><strong>Non-preemptive:</strong> Once started, the selected job runs until it’s finished.
+                            However, in some systems, a <b>Preemptive SJN</b> variant called Shortest Remaining Time
+                            First
+                            (SRTF) interrupts a running process if a shorter job arrives.</li>
+                        <li><strong>Optimal for Waiting Time:</strong> Minimizes average waiting time compared to other
+                            algorithms,
+                            given that shorter jobs are executed first.</li>
+                    </ul>
+                    <p><strong>Pros:</strong></p>
+                    <ul>
+                        <li>Efficiently reduces waiting time by running shorter processes ahead of longer ones.</li>
+                        <li>Better suited for time-sensitive jobs and tasks with known execution times.</li>
+                    </ul>
+                    <p><strong>Cons:</strong></p>
+                    <ul>
+                        <li><strong>Requires Knowledge of Execution Time:</strong> SJN relies on knowing the length of
+                            each job, which isn’t always possible in real-world scenarios.</li>
+                        <li><strong>Starvation of Longer Jobs:</strong> Long-running processes may be continuously
+                            postponed
+                            if shorter jobs keep arriving, potentially leading to indefinite waiting times for large
+                            tasks. </li>
+                    </ul>
+                    <p><strong>Use Case:</strong> Often used in batch processing systems or situations where task
+                        durations
+                        can be estimated. It is less commonly used in interactive systems where process times vary
+                        significantly.</p>
                 </div>
             </div>
 
+            <!-- SRT -->
             <div class="blog-box">
-                <!-- <div class="blog-img">
-                    <img src="./images/CPU Scheduling_1.PNG" alt="Blog">
-                </div> -->
-
                 <div class="blog-text">
-                    <a href="https://www.crucial.in/articles/about-memory/what-is-the-difference-between-ram-and-rom#:~:text=RAM%20is%20volatile%20memory%20that,Find%20out%20more%20about%20RAM." class="blog-title">Shortest Remaining Time</a>
-                    <p>RAM is a volatile memory that temporarily stores the files you are working on. ROM is non-volatile... </p>
-                    <a href="https://www.crucial.in/articles/about-memory/what-is-the-difference-between-ram-and-rom#:~:text=RAM%20is%20volatile%20memory%20that,Find%20out%20more%20about%20RAM." id="more">Read More...</a>
+                    <a href="javascript:void(0);" class="blog-title" onclick="openCard('srtf')">Shortest Remaining Time
+                        First (SRTF)
+                    </a>
+                    <p>SRTF is a preemptive version of Shortest Job Next (SJN). The CPU selects the process with the...
+                    </p>
+                    <a href="javascript:void(0);" id="more" onclick="openCard('srtf')">Read More...</a>
+                </div>
+
+                <div class="overlay" onclick="closeCard()"></div>
+                <div class="card" id="srtf-card">
+                    <button class="close-btn" onclick="closeCard()">x</button>
+                    <h2>Shortest Remaining Time First (SRTF)</h2>
+                    <p><strong>Mechanism:</strong> SRTF is a preemptive version of Shortest Job Next (SJN). The CPU
+                        selects the process with the shortest remaining time to complete.
+                        If a new process arrives with a shorter remaining time than the current one, it preempts the
+                        current process.</p>
+                    <p><strong>Characteristics:</strong></p>
+                    <ul>
+                        <li><strong>Preemptive:</strong> Processes are interrupted if a new job with a shorter remaining
+                            time arrives.</li>
+                        <li><strong>Optimized Waiting Time:</strong> Since shorter jobs are prioritized, average waiting
+                            time is minimized.</li>
+                    </ul>
+                    <p><strong>Pros:</strong></p>
+                    <ul>
+                        <li><strong>Efficient Waiting Times:</strong> Reduces overall waiting time by dynamically
+                            selecting the shortest remaining job.</li>
+                        <li><strong>Better for Interactive Systems:</strong> More responsive as shorter tasks are
+                            completed faster.</li>
+                    </ul>
+                    <p><strong>Cons:</strong></p>
+                    <ul>
+                        <li><strong>Requires Knowledge of Job Length:</strong> Accurate estimation of job lengths is
+                            necessary,
+                            which may be difficult or impossible in certain situations.</li>
+                        <li><strong>Frequent Context Switching:</strong> Preemptions can lead to high context-switching
+                            overhead,
+                            potentially slowing down the system.</li>
+                    </ul>
+                    <p><strong>Use Case:</strong> Often suitable for interactive environments where smaller tasks
+                        benefit from
+                        priority, like time-sharing systems, but may be less effective in systems where task lengths are
+                        unpredictable.</p>
                 </div>
             </div>
-        </div>
 
-        <div class="blog-container" data-aos="zoom-in-up">
+            <!-- Priority -->
             <div class="blog-box">
-                <!-- <div class="blog-img">
-                    <img src="./images/CPU Scheduling_5.PNG" alt="Blog">
-                </div> -->
-
                 <div class="blog-text">
-                    <a href="https://www.tutorialspoint.com/semaphores-in-operating-system" class="blog-title">Priority Scheduling</a>
-                    <p>A semaphore is a variable or abstract data type used to control access to a common resource by...</p>
-                    <a href="https://www.tutorialspoint.com/semaphores-in-operating-system" id="more">Read More...</a>
+                    <a href="javascript:void(0);" class="blog-title" onclick="openCard('priority')">Priority Scheduling
+                    </a>
+                    <p>Processes are assigned priority levels (usually numerical).
+                        The CPU selects the process with the...</p>
+                    <a href="javascript:void(0);" id="more" onclick="openCard('priority')">Read More...</a>
+                </div>
+
+                <div class="overlay" onclick="closeCard()"></div>
+                <div class="card" id="priority-card">
+                    <button class="close-btn" onclick="closeCard()">x</button>
+                    <h2>Priority Scheduling</h2>
+                    <p><strong>Mechanism:</strong> Processes are assigned priority levels (usually numerical).
+                        The CPU selects the process with the highest priority first, executing it either until it’s
+                        done (non-preemptive) or until a higher-priority process arrives (preemptive).</p>
+                    <p><strong>Characteristics:</strong></p>
+                    <ul>
+                        <li><strong>Can Be Preemptive or Non-preemptive:</strong> In a preemptive version, if a
+                            higher-priority process
+                            arrives, it interrupts the current process.
+                            In a non-preemptive version, the current process continues until it’s completed.</li>
+                        <li><strong>Flexibility in Priority Assignment:</strong> Priority levels can be set based on
+                            factors like
+                            resource needs, user importance, or deadlines.</li>
+                    </ul>
+                    <p><strong>Pros:</strong></p>
+                    <ul>
+                        <li><strong>Efficiency for Critical Tasks:</strong> Critical processes can be given priority to
+                            ensure timely execution.</li>
+                        <li><strong>Customizable:</strong> Can be adjusted to suit system or user needs based on the
+                            importance of tasks.</li>
+                    </ul>
+                    <p><strong>Cons:</strong></p>
+                    <ul>
+                        <li><strong>Starvation:</strong> Lower-priority tasks can experience indefinite delays if
+                            high-priority tasks keep arriving.</li>
+                        <li><strong>Aging Requirement:</strong> To prevent starvation, priority scheduling often
+                            requires aging
+                            (increasing priority over time for waiting processes) to ensure eventual CPU time.</li>
+                    </ul>
+                    <p><strong>Use Case:</strong> Useful for systems that handle both critical and routine processes,
+                        such as real-time operating systems where certain tasks (e.g., handling hardware interrupts)
+                        need immediate CPU access over regular user processes.</p>
                 </div>
             </div>
 
+            <!-- RR -->
             <div class="blog-box">
-                <!-- <div class="blog-img">
-                    <img src="./images/CPU Scheduling_6.PNG" alt="Blog">
-                </div> -->
-
                 <div class="blog-text">
-                    <a href="https://www.geeksforgeeks.org/introduction-of-deadlock-in-operating-system/" class="blog-title">Round Robin Scheduling</a>
-                    <p>A deadlock is a condition that may happen in a system composed of multiple processes that can access...</p>
-                    <a href="https://www.geeksforgeeks.org/introduction-of-deadlock-in-operating-system/" id="more">Read More...</a>
+                    <a href="javascript:void(0);" class="blog-title" onclick="openCard('rr')">Round Robin (RR)
+                    </a>
+                    <p>Each process is assigned a fixed time quantum or time slice (e.g., 10ms). Processes are placed in
+                        a...</p>
+                    <a href="javascript:void(0);" id="more" onclick="openCard('rr')">Read More...</a>
+                </div>
+
+                <div class="overlay" onclick="closeCard()"></div>
+                <div class="card" id="rr-card">
+                    <button class="close-btn" onclick="closeCard()">x</button>
+                    <h2>Round Robin (RR)</h2>
+                    <p><strong>Mechanism:</strong> Each process is assigned a fixed time quantum or time slice (e.g.,
+                        10ms).
+                        Processes are placed in a circular queue, and the CPU switches between them after each time
+                        slice,
+                        giving each process a share of CPU time in a cyclic order.</p>
+                    <p><strong>Characteristics:</strong></p>
+                    <ul>
+                        <li><strong>Preemptive:</strong> After each time quantum, if a process hasn’t completed, it’s
+                            moved to the
+                            back of the queue, and the CPU shifts to the next process.</li>
+                        <li><strong>Responsive:</strong> Allows processes to get a regular share of CPU time, making it
+                            suitable for time-sharing systems.</li>
+                    </ul>
+                    <p><strong>Pros:</strong></p>
+                    <ul>
+                        <li>Improves response time for all processes since they regularly get CPU attention within each
+                            cycle.</li>
+                        <li>Fairly shares CPU time across all processes, preventing any single process from monopolizing
+                            the CPU.</li>
+                    </ul>
+                    <p><strong>Cons:</strong></p>
+                    <ul>
+                        <li><strong>Overhead:</strong> Frequent context switches are necessary, which can introduce
+                            overhead and reduce overall system efficiency.</li>
+                        <li><strong>Time Quantum Selection:</strong> If the time slice is too short, the overhead from
+                            context switches will increase;
+                            if it’s too long, it behaves similarly to FCFS and reduces responsiveness.</li>
+                    </ul>
+                    <p><strong>Use Case:</strong> Common in interactive and time-sharing systems, like operating systems
+                        for multi-user environments,
+                        where each user or application needs responsive CPU time.</p>
                 </div>
             </div>
 
+            <!-- Multilevel Queue -->
             <div class="blog-box">
-                <!-- <div class="blog-img">
-                    <img src="./images/CPU Scheduling_7.PNG" alt="Blog">
-                </div> -->
-
                 <div class="blog-text">
-                    <a href="https://www.techopedia.com/definition/1115/storage#:~:text=Storage%20is%20a%20process%20through,data%2C%20either%20temporarily%20or%20permanently." class="blog-title">Multilevel Queue Scheduling</a>
-                    <p>Storage is a process through which digital data is saved within a data storage device by means of...</p>
-                    <a href="https://www.techopedia.com/definition/1115/storage#:~:text=Storage%20is%20a%20process%20through,data%2C%20either%20temporarily%20or%20permanently." id="more">Read More...</a>
+                    <a href="javascript:void(0);" class="blog-title" onclick="openCard('mlq')">Multilevel Queue (MLQ)
+                    </a>
+                    <p>This algorithm divides processes into multiple queues based on priority, type, or required...</p>
+                    <a href="javascript:void(0);" id="more" onclick="openCard('mlq')">Read More...</a>
+                </div>
+
+                <div class="overlay" onclick="closeCard()"></div>
+                <div class="card" id="mlq-card">
+                    <button class="close-btn" onclick="closeCard()">x</button>
+                    <h2>Multilevel Queue (MLQ)</h2>
+                    <p><strong>Mechanism:</strong> This algorithm divides processes into multiple queues based on
+                        priority,
+                        type, or required resources (e.g., system processes, interactive tasks, and batch jobs).
+                        Each queue can have its own scheduling algorithm, like Round Robin or FCFS, and processes do not
+                        move between queues.</p>
+                    <p><strong>Characteristics:</strong></p>
+                    <ul>
+                        <li><strong>Non-preemptive or Preemptive:</strong> Each queue operates independently, and the
+                            system can prioritize queues by hierarchy (e.g., system processes always run before batch
+                            jobs).</li>
+                        <li><strong>Segregated by Type:</strong> Each queue caters to a different type of process, and
+                            priority is set at the queue level.</li>
+                    </ul>
+                    <p><strong>Pros:</strong></p>
+                    <ul>
+                        <li><strong>Efficient Task Management:</strong> By grouping similar tasks, the system can handle
+                            different process types more efficiently.</li>
+                        <li><strong>Flexible and Customizable:</strong> Different scheduling algorithms can be applied
+                            to each queue based on process requirements.</li>
+                    </ul>
+                    <p><strong>Cons:</strong></p>
+                    <ul>
+                        <li><strong>Rigid Queue Assignment:</strong> Processes are assigned to specific queues and
+                            cannot switch, which may lead to inefficiency if a high-priority task is in a low-priority
+                            queue.</li>
+                        <li><strong>Risk of Starvation:</strong> Lower-priority queues may experience starvation if
+                            high-priority queues remain occupied.</li>
+                    </ul>
+                    <p><strong>Use Case:</strong> Common in systems with varied types of processes requiring different
+                        priorities, such as OS-level scheduling in time-sharing and real-time systems, where system
+                        tasks are prioritized over user tasks.</p>
                 </div>
             </div>
         </div>
     </section>
 
-     
+
     <section class="footer">
         <p>Made With <i class="far fa-heart"></i> by Vaibhav & Diya</p>
-        <p> <i class="fa fa-copyright"></i> copyright 2024 | All rights reserved</p>
+        <p><i class="fa fa-copyright"></i> copyright 2024 | All rights reserved</p>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
@@ -384,7 +413,7 @@
             navLinks.style.right = "-200px";
         }
 
-        function gotoSimulator(){
+        function gotoSimulator() {
             location.href = ("./backend/ganttcharts.html");
         }
     </script>
@@ -393,10 +422,27 @@
     <!-- For the animation -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      AOS.init({
-        offset: 200, // offset (in px) from the original trigger point
-        duration: 600
-      });
+        AOS.init({
+            offset: 200, // offset (in px) from the original trigger point
+            duration: 600
+        });
+    </script>
+
+
+    <script>
+        // Function to open a card based on the algorithm type
+        function openCard(algo) {
+            document.querySelector('.overlay').style.display = 'block';
+            document.getElementById(algo + '-card').style.display = 'block';
+        }
+
+        // Function to close all cards
+        function closeCard() {
+            document.querySelector('.overlay').style.display = 'none';
+            document.querySelectorAll('.card').forEach(card => {
+                card.style.display = 'none';
+            });
+        }
     </script>
 </body>
 
