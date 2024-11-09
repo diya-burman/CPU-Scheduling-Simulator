@@ -51,17 +51,28 @@
             <div class="course-colomn" >
                 <h3>CPU Utilization</h3>
                 <hr>
-                <p>CPU scheduling is a process that allows one process to use the CPU while the execution of another process is on hold due to unavailability of any resource like I/O etc, thereby making full use of CPU. The aim of CPU scheduling is to maximize CPU utilization by making the system efficient, fast, and fair.</p>
+                <p>CPU scheduling is a core function of an operating system that optimizes how processes use the CPU 
+                    to enhance system performance. When multiple processes are running, the CPU scheduler selects which
+                    process should execute next, especially when another is waiting for resources like I/O. 
+                    By alternating between processes in this way, the CPU remains busy, minimizing idle time and maximizing utilization.</p>
             </div>
             <div class="course-colomn" >
                 <h3>Maximum Performance</h3>
                 <hr>
-                <p>To make out the best use of the CPU and not to waste any CPU cycle, the CPU would be working most of the time(Ideally 100% of the time). Considering a real system, CPU usage should range from 40% (lightly loaded) to 90% (heavily loaded.)</p>
+                <p>To maximize CPU efficiency and minimize idle time, the CPU should ideally be active as much as 
+                    possible, aiming for near-continuous operation. In real systems, however, CPU usage varies based 
+                    on workload, typically ranging from 40% during light loads to around 90% under heavy loads. 
+                    This ensures a balance between performance and resource availability, allowing the system to 
+                    handle varying demands effectively.</p>
             </div>
             <div class="course-colomn" >
                 <h3>Time Minimization</h3>
                 <hr>
-                <p>There are many very different types of algorithms for different different tasks. By using them we can minimize waiting time, response time and turnaround time of processes. like turnaround time is minimized if most processes finish their next cpu burst within one time quantum.</p>
+                <p>Various CPU scheduling algorithms are designed to optimize different performance metrics, 
+                    such as minimizing waiting time, response time, and turnaround time. For example, turnaround time 
+                    is reduced when processes complete their CPU bursts within a single time quantum, as in 
+                    Round Robin scheduling. Each algorithm addresses specific needs, allowing systems to handle 
+                    diverse workloads more efficiently by selecting the best-fit scheduling method.</p>
 
             </div>
         </div>
