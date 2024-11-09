@@ -3,21 +3,20 @@ body, html {
     margin: 0;
     font-family: Arial, sans-serif;
 }
-/* .header2{
-    
-} */
+
 .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Ensures it covers the full viewport height */
+    min-height: 100vh;
     padding: 20px;
-    background-color: #f4f4f4; /* Light background color */
+    background-color: #f4f4f4;
 }
 
 h1 {
     text-align: center;
+    margin-top: 15px;
     margin-bottom: 20px;
     font-size: 2em;
 }
@@ -28,7 +27,8 @@ form {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px; /* Limits the width of the form */
+    max-width: 400px;
+    text-align: left;
 }
 
 label {
@@ -50,22 +50,135 @@ textarea {
     font-size: 1em;
 }
 
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: 2px solid #0056b3;
+    outline-offset: 2px;
+}
+
 button {
     width: 100%;
     padding: 10px;
     background-color: #007BFF;
     color: #fff;
-    border: none;
+    border: 1px solid #0056b3;
     border-radius: 4px;
     font-size: 1em;
     cursor: pointer;
-    transition: background-color 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
     background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 .hidden {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.hidden.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+    form {
+        width: 90%;
+        padding: 15px;
+    }
+}
+
+/* Ensure the navbar spans the full width and has a consistent look */
+nav.navStyle {
+    width: 100%;
+    background-color: #151D3B;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+nav.navStyle a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links ul li {
+    margin-left: 20px; /* Adjust spacing between links as needed */
+}
+
+.nav-links ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.nav-links ul li a:hover {
+    color: #007BFF; /* Hover color */
+}
+
+.nav-links i {
+    display: none; /* Hide close icon by default */
+    font-size: 1.5em;
+    color: white;
+    cursor: pointer;
+}
+
+/* Mobile responsiveness for menu icon */
+@media (max-width: 768px) {
+    .nav-links ul {
+        display: none; /* Hide menu links */
+    }
+
+    .nav-links i {
+        display: block; /* Show menu icon */
+    }
+}
+
+/* Toggle menu for mobile */
+#navLinks.show {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #151D3B;
+    width: 200px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-top: 60px;
+}
+
+#navLinks.show ul {
+    display: block;
+}
+
+#navLinks ul li {
+    margin: 15px 0;
 }

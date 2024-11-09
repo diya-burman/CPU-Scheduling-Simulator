@@ -2,110 +2,81 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CPU Simulator Feedback</title>
-    <link rel="stylesheet" href="feedback.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPU Simulator Feedback</title>
+  <link rel="stylesheet" href="feedback.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
 
 <body>
-    <section class="header">
-        <!-- <nav style="background-color: #151D3B; width: 100%;" class="navStyle">
-            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                <a href="index.html" id="op" style="color: white; padding-left: 20px; font-size: 24px;">CPU
-                    Scheduler</a>
-                <div class="nav-links" id="navLinks">
-                    <i class="fas fa-window-close" onclick="hideMenu()"></i>
-                    <ul class="menu">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="docs.html">Document</a></li>
-                        <li><a href="./backend/ganttcharts.html">Simulator</a></li>
-                        <li><a href="feedback.html">Feedback</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <i class="fas fa-bars" onclick="showMenu()"></i>
-            </div>
-        </nav> -->
-        <nav>
-            <a href="index.html">CPU Scheduler</a>
-            <div class="nav-links" id="navLinks">
-                <i class="fas fa-window-close" onclick="hideMenu()"></i>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="docs.html">Document</a></li>
-                    <li><a href="backend/ganttcharts.html">Simulator</a></li>
-                    <li><a href="feedback.html">Feedback</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+  <nav style="background-color: #151D3B; width: 100%;" class="navStyle">
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <a href="index.html" id="op" style="color: white; padding-left: 20px; font-size: 24px;">CPU Scheduler</a>
+      <div class="nav-links" id="navLinks">
+        <i class="fas fa-window-close" onclick="hideMenu()"></i>
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="docs.html">Document</a></li>
+          <li><a href="./backend/ganttcharts.html">Simulator</a></li>
+          <li><a href="feedback.html">Feedback</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <i class="fas fa-bars" onclick="showMenu()"></i>
+    </div>
+  </nav>
 
-                </ul>
-            </div>
-            <i class="fas fa-bars" onclick="showMenu()"></i>
-        </nav>
+  <section class="container">
+    <h1>Feedback for CPU Simulator</h1>
 
-        <div class="container">
-            <h1>Feedback for CPU Simulator</h1>
+    <form id="feedbackForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Your name" required>
 
-            <form id="feedbackForm">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Your name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Your email" required>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Your email" required>
+      <label for="cpu-algorithm">Favorite CPU Algorithm:</label>
+      <select id="cpu-algorithm" name="cpu-algorithm" required>
+        <option value="">Select an Algorithm</option>
+        <option value="FCFS">First Come First Serve (FCFS)</option>
+        <option value="SJF">Shortest Job First (SJF)</option>
+        <option value="SRTF">Shortest Remaining Time First (SRTF)</option>
+        <option value="RR">Round Robin (RR)</option>
+        <option value="Priority">Priority Scheduling</option>
+        <option value="MLQ">Multilevel Queue (MLQ)</option>
+      </select>
 
-                <label for="cpu-algorithm">Favorite CPU Algorithm:</label>
-                <select id="cpu-algorithm" name="cpu-algorithm" required>
-                    <option value="">Select an Algorithm</option>
-                    <option value="FCFS">First Come First Serve (FCFS)</option>
-                    <option value="SJF">Shortest Job First (SJF)</option>
-                    <option value="SRTF">Shortest Remaining Time First (SRTF)</option>
-                    <option value="RR">Round Robin (RR)</option>
-                    <option value="Priority">Priority Scheduling</option>
-                    <option value="MLQ">Multilevel Queue (MLQ)</option>
-                </select>
+      <label for="feedback">Feedback:</label>
+      <textarea id="feedback" name="feedback" rows="5" placeholder="Share your experience" required></textarea>
 
-                <label for="feedback">Feedback:</label>
-                <textarea id="feedback" name="feedback" rows="5" placeholder="Share your experience"
-                    required></textarea>
+      <button type="submit">Submit Feedback</button>
+    </form>
 
-                <button type="submit">Submit Feedback</button>
-            </form>
+    <div id="thankYouMessage" class="hidden">
+      <h2>Thank you for your feedback!</h2>
+    </div>
+  </section>
 
-            <div id="thankYouMessage" class="hidden">
-                <h2>Thank you for your feedback!</h2>
-            </div>
-        </div>
-    </section>
-    <script src="feedback.js"></script>
-    <section class="footer">
+  <section class="footer">
+    <p>Made With <i class="far fa-heart"></i> by Vaibhav & Diya</p>
+    <p><i class="fa fa-copyright"></i> copyright 2024 | All rights reserved</p>
+  </section>
 
-        <p>Made With <i class="far fa-heart"></i> by Vaibhav & Diya</p>
-        <p> <i class="fa fa-copyright"></i> copyright 2024 | All rights reserved</p>
-    </section>
-
-    <script>
-        var navLinks = document.getElementById("navLinks");
-        function showMenu() {
-            navLinks.style.right = "0";
-        }
-
-        function hideMenu() {
-            navLinks.style.right = "-200px";
-        }
-    </script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            offset: 200, // offset (in px) from the original trigger point
-            duration: 600
-        });
-    </script>
-    </section>
+  <script src="feedback.js"></script>
+  <script>
+    function showMenu() {
+        document.getElementById("navLinks").classList.add("show");
+    }
+  
+    function hideMenu() {
+        document.getElementById("navLinks").classList.remove("show");
+    }
+  </script>
 </body>
 
 </html>
