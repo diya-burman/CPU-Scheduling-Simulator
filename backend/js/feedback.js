@@ -4,6 +4,7 @@ document.getElementById("feedbackForm").addEventListener("submit", function (eve
 
     document.getElementById('feedbackForm').classList.add('hidden');
     document.getElementById('thankYouMessage').classList.remove('hidden');
+    document.querySelector('.container h1').classList.add('hidden');
     const formData = {
         name: document.getElementById("name").value,
         email: document.getElementById("email").value,
