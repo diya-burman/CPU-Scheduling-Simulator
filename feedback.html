@@ -33,7 +33,8 @@
   <section class="container">
     <h1>Feedback for CPU Simulator</h1>
 
-    <form id="feedbackForm">
+    <form id="feedbackForm" action="http://localhost:3000/submit-feedback" method="POST">
+    <!-- <form id="feedbackForm"> -->
       <label for="name">Name:</label>
       <input type="text" id="name" name="name" placeholder="Your name" required>
 
