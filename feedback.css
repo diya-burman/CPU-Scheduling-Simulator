@@ -82,11 +82,19 @@ button:hover {
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.5s ease, visibility 0.5s ease;
+    display: none;
 }
 
 .hidden.show {
     visibility: visible;
     opacity: 1;
+}
+
+#thankYouMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 @media (max-width: 480px) {
@@ -98,4 +106,8 @@ button:hover {
         width: 90%;
         padding: 15px;
     }
+}
+
+.show {
+    display: flex;
 }

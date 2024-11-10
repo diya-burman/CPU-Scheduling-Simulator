@@ -4,6 +4,7 @@ document.getElementById('feedbackForm').addEventListener('submit', function (eve
     // Hide the form and show thank you message
     document.getElementById('feedbackForm').classList.add('hidden');
     document.getElementById('thankYouMessage').classList.remove('hidden');
+    document.querySelector('.container h1').classList.add('hidden');
 
     // Optionally, you can send form data to a server here using AJAX or fetch API
 });
