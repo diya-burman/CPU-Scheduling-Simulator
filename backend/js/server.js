@@ -20,7 +20,7 @@ app.post("/submit-feedback", async (req, res) => {
 
   const mailOptions = {
     from: email,
-    to: "vasu.tan2017@gmail.com", // Replace with the email where feedback should go
+    to: "diyaburman60@gmail.com", // Replace with the email where feedback should go
     subject: "New Feedback from CPU Scheduler",
     text: `Name: ${name}\nEmail: ${email}\nCPU Algorithm: ${cpuAlgorithm}\nFeedback: ${feedback}`
   };
