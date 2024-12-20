@@ -1,3 +1,4 @@
+require('dotenv').config({ path: '../../.env' });
 const express = require("express");
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
@@ -8,14 +9,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post("/submit-feedback", async (req, res) => {
   const { name, email, cpuAlgorithm, feedback } = req.body;
 
-  require('dotenv').config();
   // Set up nodemailer
   const transporter = nodemailer.createTransport({
     service: "gmail", // Example with Gmail
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS
-    }
+    },
+    debug: true, 
   });
 
   const mailOptions = {

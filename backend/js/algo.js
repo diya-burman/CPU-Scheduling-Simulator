@@ -1,6 +1,6 @@
 
-//........................................................Section : 1 : all class related to Input and Output Property.........................................
-//combining all properties related to input section
+// Section 1 : all class related to Input and Output Property
+// combining all properties related to Input section
 class Input {
   constructor() {
     this.pid = [];  //For process id
@@ -12,7 +12,7 @@ class Input {
   }
 }
 
-//combining all properties related to Output section
+// combining all properties related to Output section
 class Output {
   constructor() {
     this.o_pid = [];
@@ -27,7 +27,7 @@ class Output {
 
 let process = 3;
 
-//creating an object for Input and Output Class..
+// creating an object for Input and Output Class..
 let mainInput = new Input();
 let mainOutput = new Output();
 var table = document.getElementById("inputTable");
@@ -36,7 +36,7 @@ var qu = 0;
 var flag = 0;
 
 
-//........................................................Section : 2 : Handling all event listner .........................................
+//Section 2 : Handling all event listner
 
 var chartdiv = document.getElementById('chartdiv');
 chartdiv.style.display = "none";
@@ -51,7 +51,7 @@ document.querySelector(".plusbtn").onclick = () => {
 }
 
 
-//........................................................Section : 3 : Implementation of Run function.........................................
+//Section 3 : Implementation of Run function
 const run = () => {
 
   //Run button property change
@@ -66,9 +66,9 @@ const run = () => {
   mainOutput.o_pid.length = 0;
 
 
-  //....................................Section : 3 (I) : Implementation of getting Input from the table and storing it into array.........................
+  // Section 3.1 : Implementation of getting Input from the table and storing it into array
   // O(n) time complexity to store the value into input array
-  //Storing all the values in arrays
+  // Storing all the values in arrays
   for (let i = 0; i < total; i++) {
 
     //Storing the value of arrival time and burst time in at and bt respectively.
@@ -88,24 +88,24 @@ const run = () => {
     }
   }
 
-  //for removing default process data
+  // for removing default process data
   if (flag == 1) {
     mainInput.burstTime.splice(-1);
     mainInput.pid.splice(-1);
     mainInput.arrivalTime.splice(-1);
   }
 
-  //changing the display property from "none" to "flex" of chart section.
+  // changing the display property from "none" to "flex" of chart section.
   chartdiv.style.display = "flex";
 
-  //calling a function for particular algorithm.
+  // calling a function for particular algorithm.
   // const fc = new FCFS(mainInput.arrivalTime, mainInput.burstTime, mainInput.pid);
 
   const fc = new sjf();
 
 
-  //........................................................Section : 3(II) : Code for storing value into output array.........................................
-  //creating a dynamic table and displaying it on front-end
+  // Section 3.2 : Code for storing value into output array
+  // creating a dynamic table and displaying it on front-end
   var final_table = document.getElementById('outputTable');
 
   for (let j = 0; j < mainInput.pid.length; j++) {
@@ -128,13 +128,11 @@ const run = () => {
 
 
 
-  //........................................................Section : 3(III) : Code for dislaying Bar chart.........................................
-  //creating an array of process id in "Pi" format. 
+  // Section 3.3 : Code for dislaying Bar chart
+  // creating an array of process id in "Pi" format. 
   var myChartLabelArray = mainOutput.o_pid;
   myChartLabelArray = myChartLabelArray.map(i => 'P' + i);
 
-
-  //Section for the Bar chart...
   const myBarChart = new Chart(
     document.getElementById('myBarChart'), {
     type: 'bar',
@@ -185,8 +183,8 @@ const run = () => {
   }
   );
 
-  //........................................................Section : 3(IV) : Code for displaying pie chart.........................................
-  // section for the pie chart for Waiting time...
+  // Section 3.4 : Code for displaying pie chart
+  // section for the pie chart for Waiting time
   const myChart = new Chart(
     document.getElementById('myChart'), {
     type: 'pie',
@@ -235,7 +233,7 @@ const run = () => {
   );
 
 
-  // section for the pie chart for Turn around time...
+  // section for the pie chart for Turn around time
   const mytatChart = new Chart(
     document.getElementById('mytatChart'), {
     type: 'pie',
@@ -297,26 +295,26 @@ function deleterow() {
 }
 
 
-//........................................................Section : 4 : Code for First come first serve algorithm.........................................
-//function for FCFS Algorithm...
+// Section 4 : Code for First come first serve algorithm
+// function for FCFS Algorithm
 function FCFS(arrivalTime, burstTime, processID) {
 
   let objCollection = [];
 
-  ////Time Complexity = O(n^2*logn) where n = number of process
-  //Making an object to be sorted later.
+  // Time Complexity = O(n^2*logn) where n = number of process
+  // Making an object to be sorted later.
   for (var x = 0; x < arrivalTime.length; x++)
     objCollection.push({ A: arrivalTime[x], B: burstTime[x], C: processID[x] });
 
-  //Sorting begins with its corresponding Arrival Time and Burst Time
-  //No interchanging of partner happens
+  // Sorting begins with its corresponding Arrival Time and Burst Time
+  // No interchanging of partner happens
   objCollection.sort(function (a, b) {
     return a.A - b.A;
   });
 
 
   for (var x = 0; x < objCollection.length; x++) {
-    //pushing to array AT and BT for later purposes.
+    // pushing to array AT and BT for later purposes.
     mainOutput.o_arrivaltime.push(objCollection[x].A);
     mainOutput.o_bursttime.push(objCollection[x].B);
     mainOutput.o_pid.push(objCollection[x].C);
@@ -330,23 +328,22 @@ function FCFS(arrivalTime, burstTime, processID) {
 }
 
 
-//........................................................Section : 5 : code to find waiting time.........................................
+// Section : 5 : code to find waiting time
 function findWaitingTime() {
 
   var service_time = Array.from({ length: mainInput.arrivalTime.length }, (_, i) => 0);
   service_time[0] = mainOutput.o_arrivaltime[0];
   mainOutput.waitingTime[0] = 0;
 
-  //Time Complexity = O(n) where n = number of process
+  // Time Complexity = O(n) where n = number of process
   // calculating waiting time
   for (var i = 1; i < mainInput.arrivalTime.length; i++) {
-    //representing wasted time 
+    // representing wasted time 
     var wasted = 0;
     // Add burst time of previous processes
     service_time[i] = service_time[i - 1] + mainOutput.o_bursttime[i - 1];
 
-    // Find waiting time for current process =
-    // sum - at[i]
+    // Find waiting time for current process = sum - at[i]
     mainOutput.waitingTime[i] = service_time[i] - mainOutput.o_arrivaltime[i];
 
     // If waiting time for a process is in negative
@@ -365,7 +362,7 @@ function findWaitingTime() {
 
 
 
-//........................................................Section : 6 : Code to find Turn around time.........................................
+// Section : 6 : Code to find Turn around time
 function findTurnAroundTime() {
 
   //Time Complexity = O(n) where n = number of process
@@ -378,7 +375,7 @@ function findTurnAroundTime() {
 
 
 
-//........................................................Section : 7 : Code to find Average time.........................................
+// Section : 7 : Code to find Average time
 var avg_waitingtime = 0;
 var avg_tat = 0;
 function averagetime() {
@@ -394,8 +391,8 @@ function averagetime() {
 }
 
 
-//........................................................Section : 8 : Code for sjf Algorithm.........................................
-// JavaScript program for implementation of SJF
+// Section : 8 : Code for sjf Algorithm
+// program for implementation of SJF
 
 
 function sjf() {
@@ -403,34 +400,34 @@ function sjf() {
   //sorting using arrival time
   let objCollection = [];
 
-  ////Time Complexity = O(nlogn) where n = number of process
-  //Making an object to be sorted later.
+  // Time Complexity = O(nlogn) where n = number of process
+  // Making an object to be sorted later.
   for (var x = 0; x < arrivalTime.length; x++)
     objCollection.push({ A: arrivalTime[x], B: burstTime[x], C: processID[x] });
 
-  //Sorting begins with its corresponding Arrival Time and Burst Time
-  //No interchanging of partner happens
+  // Sorting begins with its corresponding Arrival Time and Burst Time
+  // No interchanging of partner happens
   objCollection.sort(function (a, b) {
     return a.A - b.A;
   });
 
 
-  //sorting of burst time
-  for (let i = 0; i < n; i++) {  //time complexity for this loop is O(n)
+  // sorting of burst time
+  for (let i = 0; i < n; i++) {  // time complexity for this loop is O(n)
     pos = i;
-    for (let j = i + 1; j < n; j++) {  //time complexity for this loop is O(n)
+    for (let j = i + 1; j < n; j++) {  // time complexity for this loop is O(n)
       if (burstTime[j] < burstTime[pos]) {
         pos = j;
       }
     }
 
     // Total time complexity is O(n^2) where n is the number of processes
-    //swapping for burst time
+    // swapping for burst time
     temp = burstTime[i];
     burstTime[i] = burstTime[pos];
     burstTime[pos] = temp;
 
-    //swapping for process id
+    // swapping for process id
     temp = p[i];
     p[i] = p[pos];
     p[pos] = temp;
@@ -444,7 +441,7 @@ function sjf() {
 }
 
 
-//........................................................Section : 8 : Code for sPriority Algorithm.........................................
+// Section 8 : Code for Priority Algorithm
 
 
 // Javascript program for implementation of priority
@@ -454,45 +451,45 @@ function priority(arrivalTime, burstTime, processID, priority) {
   //sorting using arrival time
   let objCollection = [];
 
-  ////Time Complexity = O(nlogn) where n = number of process
-  //Making an object to be sorted later.
+  // Time Complexity = O(nlogn) where n = number of process
+  // Making an object to be sorted later.
   for (var x = 0; x < arrivalTime.length; x++)
     objCollection.push({ A: arrivalTime[x], B: burstTime[x], C: processID[x], D: priority[x] });
 
-  //Time Complexity = O(nLogn)
-  //Sorting begins with its corresponding Arrival Time and Burst Time
-  //No interchanging of partner happens
+  // Time Complexity = O(nLogn)
+  // Sorting begins with its corresponding Arrival Time and Burst Time
+  // No interchanging of partner happens
   objCollection.sort(function (a, b) {
     return a.A - b.A;
   });
 
-  //sorting of priority
-  for (let i = 0; i < n; i++) {  //time complexity for this loop is O(n)
+  // sorting of priority
+  for (let i = 0; i < n; i++) {  // time complexity for this loop is O(n)
     pos = i;
-    for (let j = i + 1; j < n; j++) {  //time complexity for this loop is O(n)
+    for (let j = i + 1; j < n; j++) {  // time complexity for this loop is O(n)
       if (priority[j] < priority[pos]) {
         pos = j;
       }
     }
 
     // Total time complexity is O(n^2) where n is the number of processes
-    //swapping for Priority of the process
+    // swapping for Priority of the process
     temp = priority[i];
     priority[i] = priority[pos];
     priority[pos] = temp;
 
 
-    //swapping for burst time
+    // swapping for burst time
     temp = burstTime[i];
     burstTime[i] = burstTime[pos];
     burstTime[pos] = temp;
 
-    //swapping for arrival time
+    // swapping for arrival time
     temp = arrivalTime[i];
     arrivalTime[i] = arrivalTime[pos];
     arrivalTime[pos] = temp;
 
-    //swapping for process id
+    // swapping for process id
     temp = p[i];
     p[i] = p[pos];
     p[pos] = temp;
