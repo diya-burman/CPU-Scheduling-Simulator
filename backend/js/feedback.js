@@ -28,4 +28,12 @@ document.getElementById("feedbackForm").addEventListener("submit", function (eve
             }
         })
         .catch((error) => console.error("Error:", error));
+
+        fetch("/submit-feedback", { // Correct the URL to match your backend route
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        })
 });
