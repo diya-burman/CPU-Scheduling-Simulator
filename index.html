@@ -212,7 +212,14 @@
             location.href = ("docs.html");
         }
     </script>
+    <script>
+        const sidebar = document.querySelector('.sidebar');
+        const body = document.body;
 
+        document.querySelector('.toggle-btn').addEventListener('click', () => {
+            body.classList.toggle('sidebar-open');
+        });
+    </script>
     <!-- animation for cards -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
