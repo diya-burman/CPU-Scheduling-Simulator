@@ -8,12 +8,11 @@
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
-  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="\images\favicon\cpufavicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="\images\favicon\cpufavicon.ico" type="image/x-icon">
   <link rel="stylesheet" type="text/css" href="./css/bootstrap-simplex.css">
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="./css/explanation.css">
-  <link rel="stylesheet" href="./about.css">
-
 
   <style>
     .pie {
@@ -21,46 +20,45 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 20px;
+      gap: 1px;
     }
 
     .chartMenu {
-      margin-bottom: 1px;
+      margin-bottom: 0px;
       padding: 0;
       font-size: 16px;
       font-weight: bold;
       flex-direction: column;
       width: 50vw;
       height: 40px;
+      /* Reduce height */
       color: rgba(255, 26, 104, 1);
     }
 
     .chartMenu p {
-      margin: -5px !important;
-      padding: 0 !important;
+      margin: 0 !important;
+      /* Remove negative margin */
+      padding: 5px !important;
+      /* Reduce padding */
       line-height: 1 !important;
-      padding: 10px;
-      font-size: 20px;
+      font-size: 18px;
+      /* Slightly smaller font if needed */
       text-align: center;
     }
 
-    .chartCard {
-      width: 50vw;
-      height: calc(100vh - 100px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
     .chartBox {
-      padding-top: 5px;
       width: 400px;
       padding: 20px;
       border-radius: 20px;
       border: solid 3px rgba(255, 26, 104, 1);
       background: white;
       color: black;
+      margin-top: 10px;
+      /* Adjust spacing */
+      margin-left: 170px;
+      margin-bottom: 50px;
     }
+
 
     .barChart {
       width: 70vw;
@@ -80,8 +78,6 @@
   </style>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-  <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
   <script src="./js/bootstrap.min.js"></script>
   <script src="./js/bootstrap-slider.js"></script>
   <link rel="stylesheet" type="text/css" href="./css/cpu-scheduler.css">
@@ -232,7 +228,7 @@
           <p style="margin-top:15px;" id="algorithm_explanation">
           </p>
 
-        </div><!-- /column -->
+        </div>
         <div class="col-md-4">
           <div>
             <label>Number of Processes:</label>
@@ -308,19 +304,9 @@
           <p>Click on the Reset button to run another program</p>
           <button onclick=(location.reload()) class="runButton" aria-label="Reset Button">Reset</button>
         </div>
-
-        <!-- <div class="col-md-4" style="margin-top:20px;">
-
-  </div> -->
-
         <!-- /column -->
-
-
       </div><!-- /row -->
-
     </div><!-- /well -->
-
-
 
     <div class="progress" style="height:25px;margin-bottom:0px;">
 
@@ -329,8 +315,6 @@
 
 
     <hr color="#001d2c" style="margin-top: 35px;">
-
-    <!-- <div id="outputDiv"></div> -->
 
     <h1 style="text-align: center;">Output Table</h1>
     <hr>
@@ -341,7 +325,6 @@
           <th style="background-color: #9adcff;">Process:</th>
           <th style="background-color: #9ADCFF;">Arrival Time:</th>
           <th style="background-color: #9ADCFF;">Burst Time:</th>
-          <!-- <th class="priority collapse">Priority:</th> -->
           <th style="background-color: #9ADCFF;">Completion Time: </th>
           <th style="background-color: #9ADCFF;">Turn around Time: </th>
           <th style="background-color: #9ADCFF;">Waiting Time: </th>
@@ -356,11 +339,6 @@
     <div class="datavisulization">
       <h2 style="text-align: center; margin-bottom: 40px;">Data Visulization</h2>
 
-
-      <!-- <div class="barChart">
-      <canvas id="myBarChart"></canvas>
-    </div> -->
-
       <hr>
       <div class="pie" id="chartdiv">
         <div class="first">
@@ -370,7 +348,6 @@
           <div class="chartCard">
             <div class="chartBox">
               <canvas id="myChart" width="400" height="400"></canvas>
-              <!-- <canvas id="myChart"></canvas> -->
             </div>
           </div>
         </div>
@@ -380,7 +357,6 @@
           </div>
           <div class="chartCard">
             <div class="chartBox">
-              <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
               <canvas id="mytatChart" width="400" height="400"></canvas>
             </div>
           </div>
@@ -419,11 +395,6 @@
       <p> <i class="fa fa-copyright"></i> Copyright 2024 | All rights reserved</p>
   </section>
 
-
-
-
-
-  <!-- <script src="js/algo.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js"
     integrity="sha512-R/QOHLpV1Ggq22vfDAWYOaMd5RopHrJNMxi8/lJu8Oihwi4Ho4BRFeiMiCefn9rasajKjnx9/fTQ/xkWnkDACg=="

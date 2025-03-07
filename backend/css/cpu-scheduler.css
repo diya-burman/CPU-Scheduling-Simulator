@@ -41,65 +41,51 @@ h2:hover {
 }
 
 .progress-bar-idle {
-  background-color: #f5f5f5;
-
+  background-color: #e0e0e0; /* Soft Gray */
 }
 
 .progress-bar-context {
-  background-color: #000;
-
+  background-color: #212121; /* Deep Black */
 }
 
 .progress-bar-first {
-  background-color: #3cb521;
-
+  background-color: #1e88e5; /* Vivid Blue */
 }
 
 .progress-bar-second {
-  background-color: #ff8800;
-
+  background-color: #ff7043; /* Warm Sunset Orange */
 }
 
 .progress-bar-third {
-  background-color: #9c27b0;
-
+  background-color: #8e24aa; /* Royal Purple */
 }
 
-
-
 .progress-bar-fourth {
-  background-color: #18bc9c;
-
+  background-color: #43a047; /* Rich Green */
 }
 
 .progress-bar-fifth {
-  background-color: #DF3D82;
-
+  background-color: #f50057; /* Striking Pink */
 }
 
 .progress-bar-sixth {
-  background-color: #150379;
-
+  background-color: #5e35b1; /* Deep Violet */
 }
 
 .progress-bar-seventh {
-  background-color: #ff3f00;
-
+  background-color: #ffb300; /* Bold Amber */
 }
 
 .progress-bar-eighth {
-  background-color: #a12568;
-
+  background-color: #6d4c41; /* Coffee Brown */
 }
 
 .progress-bar-ninth {
-  background-color: #7b113a;
-
+  background-color: #3949ab; /* Electric Blue */
 }
 
 .progress-bar-tenth {
-  background-color: #086e7d;
-
+  background-color: #00bcd4; /* Cool Cyan */
 }
 
 .input-number {
