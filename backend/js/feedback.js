@@ -1,10 +1,11 @@
-// feedback.js
 document.getElementById("feedbackForm").addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent form from submitting normally
 
-    document.getElementById('feedbackForm').classList.add('hidden');
-    document.getElementById('thankYouMessage').classList.remove('hidden');
-    document.querySelector('.container h1').classList.add('hidden');
+    // Hide the form and show the thank-you message
+    document.getElementById("feedbackForm").classList.add("hidden");
+    document.getElementById("thankYouMessage").classList.remove("hidden");
+
+    // Collect form data
     const formData = {
         name: document.getElementById("name").value,
         email: document.getElementById("email").value,
@@ -12,7 +13,8 @@ document.getElementById("feedbackForm").addEventListener("submit", function (eve
         feedback: document.getElementById("feedback").value,
     };
 
-    fetch("/send-feedback", {
+    // Send data to the server
+    fetch("http://localhost:5500/submit-feedback", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -21,19 +23,20 @@ document.getElementById("feedbackForm").addEventListener("submit", function (eve
     })
         .then((response) => {
             if (response.ok) {
-                document.getElementById("thankYouMessage").classList.remove("hidden");
+                console.log("Feedback submitted successfully.");
                 document.getElementById("feedbackForm").reset();
             } else {
                 alert("Failed to send feedback. Please try again.");
+                // Re-show the form if submission failed
+                document.getElementById("feedbackForm").classList.remove("hidden");
+                document.getElementById("thankYouMessage").classList.add("hidden");
             }
         })
-        .catch((error) => console.error("Error:", error));
-
-        fetch("/submit-feedback", { // Correct the URL to match your backend route
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-        })
+        .catch((error) => {
+            console.error("Error:", error);
+            alert("An error occurred. Please try again later.");
+            // Re-show the form in case of error
+            document.getElementById("feedbackForm").classList.remove("hidden");
+            document.getElementById("thankYouMessage").classList.add("hidden");
+        });
 });
