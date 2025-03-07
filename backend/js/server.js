@@ -55,7 +55,7 @@ app.post("/submit-feedback", async (req, res) => {
     const mailOptions = {
       from: process.env.EMAIL_USER, // Ensure email sender is correct
       to: 'diyaburman60@example.com', // Change to your email
-      subject: 'New Feedback from CPU Scheduler',
+      subject: 'New Feedback from CPU AlgoSched',
       text: `Name: ${name}\nEmail: ${email}\nCPU Algorithm: ${cpuAlgorithm}\nFeedback: ${feedback}`
     };
 

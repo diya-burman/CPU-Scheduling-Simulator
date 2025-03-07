@@ -1,4 +1,4 @@
-# CPU Scheduler 
+# CPU AlgoSched 
 
 This project simulates various CPU scheduling algorithms to demonstrate how different algorithms impact system performance. The goal is to help understand and compare the efficiency of different scheduling strategies used by operating systems for CPU resource allocation.
 
