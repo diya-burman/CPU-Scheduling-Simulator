@@ -1,16 +1,27 @@
-# CPU AlgoSched 
+# CPU Scheduling Simulator – CPU AlgoSched
+Welcome to CPU AlgoSched, a web-based CPU scheduling simulator designed to help users learn, visualize, and compare various CPU scheduling algorithms interactively.
 
+# Overview
 This project simulates various CPU scheduling algorithms to demonstrate how different algorithms impact system performance. The goal is to help understand and compare the efficiency of different scheduling strategies used by operating systems for CPU resource allocation.
 
-## Features
+# Key Features
+- Interactive Gantt Chart Simulator
+- Algorithm Documentation with Visuals
+- Performance Metric Comparison
 
-- **First Come First Serve (FCFS)**: A simple scheduling algorithm where processes are executed in the order they arrive in the ready queue.
-- **Shortest Job First (SJF)**: A non-preemptive scheduling algorithm that selects the process with the smallest burst time next.
-- **Shortest Remaining Job First (SRJF)**: A preemptive scheduling algorithm that selects the process with the smallest remaining burst time.
-- **Round Robin (RR)**: A preemptive scheduling algorithm that assigns a fixed time quantum to each process in the ready queue.
-- **Priority Scheduling**: A preemptive scheduling algorithm that selects processes based on priority values.
+# Supported Algorithms
+- **FCFS (First Come First Serve)**
+- **SJF (Shortest Job First)**
+- **SRTF (Shortest Remaining Time First)**
+- **Priority Scheduling**
+- **Priority Premptive**
+- **Round Robin (RR)**
 
-
+# Each algorithm is presented with:
+- Description
+- Characteristics
+- Pros & Cons
+- Use Cases
 
 
 
